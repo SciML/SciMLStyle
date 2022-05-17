@@ -327,6 +327,11 @@ foobar(array_data::AbstractArray{T}, item::T) where {T<:Int64} = T[
 - Functions which mutate arguments should be appended with `!`.
 - [Avoid type piracy](https://docs.julialang.org/en/v1/manual/style-guide/#Avoid-type-piracy). I.e., do not add methods
   to functions you don't own on types you don't own. Either own the types or the function.
+- Functions should prefer instances instead of types for arguments. For example, for a solver type `Tsit5`, the interface
+  should use `solve(prob,Tsit5())`, not `solve(prob,Tsit5)`. The reason for this is multifold. For one, passing a type
+  has different specialization rules, so functionality can be slower unless `::Type{Tsit5}` is written in the dispatches
+  which use it. Secondly, this allows for default and keyword arguments to extend the choices, which may become useful
+  for some types down the line. Using this form allows adding more options in a non-breaking manner.
 
 ### Function Argument Precendence
 
