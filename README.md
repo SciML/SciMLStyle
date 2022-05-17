@@ -194,11 +194,45 @@ of today can generate. That said, the worst of all worlds is when code mixes mut
 code. Not only is this a mishmash of coding styles, it has the potential non-locality and compiler
 proof issues of mutating code while not fully benefiting from the mutation.
 
-### Immutability is preferred when sufficient performant
+### Out-Of-Place and Immutability is preferred when sufficient performant
+
+Mutation is used to get more performance by decreasing the amount of heap allocations. However,
+if it's not helpful for heap allocations in a given spot, do not use mutation. Mutation is scary
+and should be avoided unless it gives an immediate benefit. For example, if
+matrices are sufficiently large, then `A*B` is as fast as `mul!(C,A,B)`, and thus writing
+`A*B` is preferred (unless the rest of the function is being careful about being fully non-allocating,
+in which case this should be `mul!` for consistency). 
+
+Similarly, when defining types, using `struct` is preferred to `mutable struct` unless mutating
+the struct is a common occurance. Even if mutating the struct is a common occurance, see whether
+using [SetField.jl](https://github.com/jw3126/Setfield.jl) is sufficient. The compiler will optimize
+the construction of immutable structs, and thus this can be more efficient if it's not too much of a
+code hassle.
 
 ### Tests should attempt to cover a wide gambit of input types
 
+Code coverage numbers are meaningless if one does not consider the input types. For example, one can
+hit all of the code with `Array`, but that does not test whether `CuArray` is compatible! Thus it's
+always good to think of coverage not in terms of lines of code but in terms of type coverage. A good
+list of number types to think about are:
+
+- Float64
+- Float32
+- Complex
+- [Dual](https://github.com/JuliaDiff/ForwardDiff.jl)
+- Bigfloat
+
+Array types to think about testing are:
+
+- `Array`
+- [`OffsetArray`](https://github.com/JuliaArrays/OffsetArrays.jl)
+- [`CuArray`](https://github.com/JuliaGPU/CUDA.jl)
+
 ### When in doubt, a submodule should become a subpackage or separate package
+
+Keep packages to one core idea. If there's something separate enough to be a submodule, could it
+instead be a separate well-tested and documented package to be used by other packages? Most likely
+yes.
 
 ### Globals should be avoided whenever possible
 
@@ -208,6 +242,10 @@ defined at the top of the file, immediately after imports and exports but before
 If you truly want mutable global style behaviour you may want to look into mutable containers or closures.
 
 ### Type-stable and Type-grounded code is preferred wherever possible
+
+Type-stable and type-grounded code helps the compiler create not only more optimized code, but also
+faster to compile code. Always keep containers well-typed, functions specializing on the approrpiate
+arguments, and types concrete.
 
 ### Numerical functionality should use the appropriate generic numerical interfaces
 
