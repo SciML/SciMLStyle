@@ -405,6 +405,27 @@ foobar(array_data::AbstractArray{T}, item::T) where {T<:Int64} = T[
   has different specialization rules, so functionality can be slower unless `::Type{Tsit5}` is written in the dispatches
   which use it. Secondly, this allows for default and keyword arguments to extend the choices, which may become useful
   for some types down the line. Using this form allows adding more options in a non-breaking manner.
+- If the number of arguments is too large to fit into a 92 character line, then use as many arguments as possible within
+  a line and start each new row with the same indentation, preferably at the same column as the `(` but this can be moved
+  left if the function name is very long. For example:
+  
+```julia
+# Yes 
+function my_large_function(argument1, argument2,
+                           argument3, argument4,
+                           argument5,x,y,z)
+
+# No
+function my_large_function(argument1, 
+                           argument2,
+                           argument3, 
+                           argument4,
+                           argument5,
+                           x,
+                           y,
+                           z)
+```
+
 
 ### Function Argument Precendence
 
