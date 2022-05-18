@@ -249,9 +249,44 @@ arguments, and types concrete.
 
 ### Numerical functionality should use the appropriate generic numerical interfaces
 
+While you can use `A\b` to do a linear solve inside of a package, that does not mean that you should.
+This interface is only sufficient for performing factorizations, and so that limits the scaling
+choices, the types of `A` that can be supported, etc. Instead, linear solves within packages should
+use LinearSolve.jl. Similarly, nonlinear solves should use NonlinearSolve.jl. Optimization should use
+GalacticOptim.jl. Etc. This allows the full generic choice to be given to the user without depending
+on every solver package (effectively recreating the generic interfaces within each package).
+
 ### Functions should capture one underlying principle
 
+Functions mean one thing. Every dispatch of `+` should be "the meaning of addition on these types".
+While in theory you could add dispatches to `+` that mean something different, that will fail in
+generic code for which `+` means addition. Thus for generic code to work, code needs to adhere to
+one meaning for each function. Every dispatch should be an instantiation of that meaning.
+
 ### Internal choices should be exposed as options whenever possible
+
+Whenever possible, numerical values and choices within scripts should be exposed as options
+to the user. This promotes code reusability beyond the few cases the author may have expected.
+
+### Prefer code reuse over rewrites whenever possible
+
+If a package has a function you need, use the package. Add a dependency if you need to. If the
+function is missing a feature, prefer to add that feature to said package and then add it as a
+dependency. If the dependency is potentially troublesome, for example because it has a high
+load time, prefer to spend time helping said package fix these issues and add the dependency.
+Only when it does not seem possible to make the package "good enough" should using the package 
+be abandoned. If it is abandoned, consider building a new package for this functionality as you
+need it, and then make it a dependency.
+
+### Prefer to not shadow functions
+
+Two functions can have the same name in Julia by having different namespaces. For example,
+`X.f` and `Y.f` can be two different functions, with different dispatches, but the same name.
+This should be avoided whenever possible. Instead of creating `MyPackage.sort`, consider
+adding dispatches to `Base.sort` for your types if these new dispatches match the underlying
+principle of the function. If it doesn't, prefer to use a different name. While using `MyPackage.sort`
+is not conflicting, it is going to be confusing for most people unfamiliar with your code,
+so `MyPackage.special_sort` would be more helpful to newcomers reading the code.
 
 ## Specific Rules
 
