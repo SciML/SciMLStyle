@@ -1,6 +1,6 @@
 # SciML Style Guide for Julia
 
-[![SciML Code Style](https://img.shields.io/badge/SciML%20code%20style-4495d1.svg)](https://github.com/SciML/SciMLStyle)
+[![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
 
 The SciML Style Guide is a style guide for the Julia programming language. It is used by the
 [SciML Open Source Scientific Machine Learning Organization](https://sciml.ai/). As such, it is
@@ -12,12 +12,8 @@ the style guide.
 Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`.
 
 ```md
-[![SciML Code Style](https://img.shields.io/badge/SciML%20code%20style-4495d1.svg)](https://github.com/SciML/SciMLStyle)
+[![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
 ```
-
-The badge is blue:
-
-[![SciML Code Style](https://img.shields.io/badge/SciML%20code%20style-4495d1.svg)](https://github.com/SciML/SciMLStyle)
 
 ## Overarching Dogmas of the SciML Style
 
