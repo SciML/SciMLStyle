@@ -9,7 +9,7 @@ the style guide.
 
 ## Code Style Badge
 
-Let contributors know your project is following the Blue style guide by adding the badge to your `README.md`.
+Let contributors know your project is following the SciML Style Guide by adding the badge to your `README.md`.
 
 ```md
 [![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&message=SciML&color=9558b2&labelColor=389826)](https://github.com/SciML/SciMLStyle)
