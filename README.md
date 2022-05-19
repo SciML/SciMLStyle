@@ -216,7 +216,7 @@ list of number types to think about are:
 - Float32
 - Complex
 - [Dual](https://github.com/JuliaDiff/ForwardDiff.jl)
-- Bigfloat
+- BigFloat
 
 Array types to think about testing are:
 
