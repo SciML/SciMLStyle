@@ -7,6 +7,52 @@ The SciML Style Guide is a style guide for the Julia programming language. It is
 open to discussion with the community. Please file an issue or open a PR to discuss changes to 
 the style guide.
 
+**Table of Contents**
+1. [Code Style Badge](#code-style-badge)
+2. [Overarching Dogmas of the SciML Style](#overarching-dogmas-of-the-sciml-style)
+   1. [Consistency vs Adherence](#consistency-vs-adherence)
+   2. [Community Contribution Guidelines](#community-contribution-guidelines)
+   3. [Open source contributions are allowed to start small and grow over time](#open-source-contributions-are-allowed-to-start-small-and-grow-over-time)
+   4. [Generic code is preferred unless code is known to be specific](#generic-code-is-preferred-unless-code-is-known-to-be-specific)
+   5. [Internal types should match the types used by users when possible](#internal-types-should-match-the-types-used-by-users-when-possible)
+   6. [Trait definition and adherence to generic interface is preferred when possible](#trait-definition-and-adherence-to-generic-interface-is-preferred-when-possible)
+   7. [Macros should be limited and only be used for syntactic sugar](#macros-should-be-limited-and-only-be-used-for-syntactic-sugar)
+   8. [Errors should be caught as high as possible, and error messages should be contextualized for newcommers](#errors-should-be-caught-as-high-as-possible-and-error-messages-should-be-contextualized-for-newcommers)
+   9. [Subpackaging and interface packages is preferred over conditional modules via Requires.jl](#subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-requiresjl)
+   10. [Functions should either attempt to be non-allocating and reuse caches, or treat inputs as immutable](#functions-should-either-attempt-to-be-non-allocating-and-reuse-caches-or-treat-inputs-as-immutable)
+   11. [Out-Of-Place and Immutability is preferred when sufficient performant](#out-of-place-and-immutability-is-preferred-when-sufficient-performant)
+   12. [Tests should attempt to cover a wide gambit of input types](#tests-should-attempt-to-cover-a-wide-gambit-of-input-types)
+   13. [When in doubt, a submodule should become a subpackage or separate package](#when-in-doubt-a-submodule-should-become-a-subpackage-or-separate-package)
+   14. [Globals should be avoided whenever possible](#globals-should-be-avoided-whenever-possible)
+   15. [Type-stable and Type-grounded code is preferred wherever possible](#type-stable-and-type-grounded-code-is-preferred-wherever-possible)
+   16. [Numerical functionality should use the appropriate generic numerical interfaces](#numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces)
+   17. [Functions should capture one underlying principle](#functions-should-capture-one-underlying-principle)
+   18. [Internal choices should be exposed as options whenever possible](#internal-choices-should-be-exposed-as-options-whenever-possible)
+   19. [Prefer code reuse over rewrites whenever possible](#prefer-code-reuse-over-rewrites-whenever-possible)
+   20. [Prefer to not shadow functions](#prefer-to-not-shadow-functions)
+3. [Specific Rules](#specific-rules)
+   1. [High Level Rules](#high-level-rules)
+   2. [General Naming Principles](#general-naming-principles)
+   3. [Comments](#comments)
+   4. [Modules](#modules)
+   5. [Functions](#functions)
+   6. [Function Argument Precendence](#function-argument-precendence)
+   7. [Tests and Continuous Integration](#tests-and-continuous-integration)
+   8. [Whitespace](#whitespace)
+   9. [NamedTuples](#namedtuples)
+   10. [Numbers](#numbers)
+   11. [Ternary Operator](#ternary-operator)
+   12. [For loops](#for-loops)
+   13. [Function Type Annotations](#function-type-annotations)
+   14. [Struct Type Annotations](#struct-type-annotations)
+   15. [Types and Type Annotations](#types-and-type-annotations)
+   16. [Package version specifications](#package-version-specifications)
+   17. [Documentation](#documentation)
+   18. [Error Handling](#error-handling)
+   19. [Arrays](#arrays)
+   20. [VS-Code Settings](#vs-code-settings)
+
+
 ## Code Style Badge
 
 Let contributors know your project is following the SciML Style Guide by adding the badge to your `README.md`.
