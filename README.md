@@ -99,9 +99,9 @@ For example, the code:
 
 ```julia
 function f(A,B)
-   for i in 1:length(A)
-     A[i] = A[i] + B[i]
-   end
+    for i in 1:length(A)
+        A[i] = A[i] + B[i]
+    end
 end
 ```
 
@@ -455,7 +455,7 @@ foobar(array_data::AbstractArray{T}, item::T) where {T<:Int64} = T[
 # Yes 
 function my_large_function(argument1, argument2,
                            argument3, argument4,
-                           argument5,x,y,z)
+                           argument5, x, y, z)
 
 # No
 function my_large_function(argument1, 
