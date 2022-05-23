@@ -744,7 +744,7 @@ to a function.
 
     ```julia
     # Yes:
-    function foo(bar; verbose=false)
+    function foo(bar; verbose = false)
         if verbose
             println("baz")
         end
@@ -753,7 +753,7 @@ to a function.
     end
 
     # Ok:
-    function foo(bar; verbose=false)
+    function foo(bar; verbose = false)
         if verbose
             println("baz")
         end
@@ -764,20 +764,18 @@ to a function.
 ### NamedTuples
 
 The `=` character in `NamedTuple`s should be spaced as in keyword arguments.
-No space should be put between the name and its value.
-`NamedTuple`s should not be prefixed with `;` at the start.
+Space should be put between the name and its value.
 The empty `NamedTuple` should be written `NamedTuple()` not `(;)`
 
 ```julia
 # Yes:
-xy = (x=1, y=2)
-x = (x=1,)  # Trailing comma required for correctness.
+xy = (x = 1, y = 2)
+x = (x = 1,)  # Trailing comma required for correctness.
 x = (; kwargs...)  # Semicolon required to splat correctly.
 
 # No:
-xy = (x = 1, y = 2)
+xy = (x=1, y=2)
 xy = (;x=1,y=2)
-x = (; x=1)
 ```
 
 ### Numbers
@@ -914,6 +912,19 @@ mutable struct MySubString{T<:Integer} <: AbstractString
 end
 ```
 
+### Macros
+
+- Do not spaces between assignments when there are multiple assignments.
+
+```julia
+Yes:
+@parameters a = b
+@parameters a=b c=d
+
+No:
+@parameters a = b c = d
+```
+
 ### Types and Type Annotations
 
 - Avoid elaborate union types. `Vector{Union{Int,AbstractString,Tuple,Array}}` should probably
@@ -987,16 +998,16 @@ Type Template (should be skipped if is redundant with the constructor(s) docstri
 
 ```julia
 """
-    MyArray{T,N}
+    MyArray{T, N}
 
 My super awesome array wrapper!
 
 # Fields
-- `data::AbstractArray{T,N}`: stores the array being wrapped
+- `data::AbstractArray{T, N}`: stores the array being wrapped
 - `metadata::Dict`: stores metadata about the array
 """
-struct MyArray{T,N} <: AbstractArray{T,N}
-    data::AbstractArray{T,N}
+struct MyArray{T, N} <: AbstractArray{T, N}
+    data::AbstractArray{T, N}
     metadata::Dict
 end
 ```
@@ -1023,7 +1034,7 @@ builtin search :)
 # Throws
 - `NotFoundError`: I guess we could throw an error if `val` isn't found.
 """
-function mysearch(array::AbstractArray{T}, val::T) where T
+function mysearch(array::AbstractArray{T}, val::T) where {T}
     ...
 end
 ```
