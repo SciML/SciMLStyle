@@ -1118,6 +1118,10 @@ function Manager end
 
 - Avoid splatting (`...`) whenever possible. Prefer iterators such as `collect`, `vcat`, `hcat`, etc. instead.
 
+### Line Endings
+
+Always use Unix style `\n` line ending.
+
 ### VS-Code Settings
 
 If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
@@ -1133,6 +1137,7 @@ To modify these settings open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,</
         "files.trimFinalNewlines": true,
         "files.trimTrailingWhitespace": true,
         "editor.rulers": [92],
+        "files.eol": "\n"
     },
 }
 ```
