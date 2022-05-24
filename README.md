@@ -912,6 +912,14 @@ mutable struct MySubString{T<:Integer} <: AbstractString
 end
 ```
 
+Untyped fields should be explicitly typed `Any`, i.e.:
+
+```julia
+struct StructA
+    a::Any
+end
+```
+
 ### Macros
 
 - Do not spaces between assignments when there are multiple assignments.
