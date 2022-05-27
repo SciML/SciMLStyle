@@ -1173,6 +1173,21 @@ To modify these settings open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,</
 ```
 Additionally you may find the [Julia VS-Code plugin](https://github.com/julia-vscode/julia-vscode) useful.
 
+### JuliaFormatter
+
+One can add `.JuliaFormatter.toml` with the content
+```toml
+style = "sciml"
+```
+in the root of a repository, and run
+```julia
+using JuliaFormatter, SomePackage
+format(joinpath(dirname(pathof(SomePackage)), ".."))
+```
+to format the package automatically.
+
+Add [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.github/workflows/FormatCheck.yml) to enable the formatting CI. The CI will fail if the repository needs additional formatting. Thus, one should run `format` before committing.
+
 # References
 
 Many of these style choices were derived from the [Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/),
