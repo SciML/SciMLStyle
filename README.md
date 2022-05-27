@@ -25,11 +25,12 @@ the style guide.
    13. [When in doubt, a submodule should become a subpackage or separate package](#when-in-doubt-a-submodule-should-become-a-subpackage-or-separate-package)
    14. [Globals should be avoided whenever possible](#globals-should-be-avoided-whenever-possible)
    15. [Type-stable and Type-grounded code is preferred wherever possible](#type-stable-and-type-grounded-code-is-preferred-wherever-possible)
-   16. [Numerical functionality should use the appropriate generic numerical interfaces](#numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces)
-   17. [Functions should capture one underlying principle](#functions-should-capture-one-underlying-principle)
-   18. [Internal choices should be exposed as options whenever possible](#internal-choices-should-be-exposed-as-options-whenever-possible)
-   19. [Prefer code reuse over rewrites whenever possible](#prefer-code-reuse-over-rewrites-whenever-possible)
-   20. [Prefer to not shadow functions](#prefer-to-not-shadow-functions)
+   16. [Closures should be avoided whenever possible](https://github.com/SciML/SciMLStyle/blob/main/README.md#closures-should-be-avoided-whenever-possible)
+   17. [Numerical functionality should use the appropriate generic numerical interfaces](#numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces)
+   18. [Functions should capture one underlying principle](#functions-should-capture-one-underlying-principle)
+   19. [Internal choices should be exposed as options whenever possible](#internal-choices-should-be-exposed-as-options-whenever-possible)
+   20. [Prefer code reuse over rewrites whenever possible](#prefer-code-reuse-over-rewrites-whenever-possible)
+   21. [Prefer to not shadow functions](#prefer-to-not-shadow-functions)
 3. [Specific Rules](#specific-rules)
    1. [High Level Rules](#high-level-rules)
    2. [General Naming Principles](#general-naming-principles)
@@ -51,6 +52,7 @@ the style guide.
    18. [Error Handling](#error-handling)
    19. [Arrays](#arrays)
    20. [VS-Code Settings](#vs-code-settings)
+   21. [JuliaFormatter](#juliaformatter)
 
 
 ## Code Style Badge
