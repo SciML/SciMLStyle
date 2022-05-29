@@ -21,7 +21,7 @@ the style guide.
    9. [Subpackaging and interface packages is preferred over conditional modules via Requires.jl](#subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-requiresjl)
    10. [Functions should either attempt to be non-allocating and reuse caches, or treat inputs as immutable](#functions-should-either-attempt-to-be-non-allocating-and-reuse-caches-or-treat-inputs-as-immutable)
    11. [Out-Of-Place and Immutability is preferred when sufficient performant](#out-of-place-and-immutability-is-preferred-when-sufficient-performant)
-   12. [Tests should attempt to cover a wide gambit of input types](#tests-should-attempt-to-cover-a-wide-gambit-of-input-types)
+   12. [Tests should attempt to cover a wide gamut of input types](#tests-should-attempt-to-cover-a-wide-gamut-of-input-types)
    13. [When in doubt, a submodule should become a subpackage or separate package](#when-in-doubt-a-submodule-should-become-a-subpackage-or-separate-package)
    14. [Globals should be avoided whenever possible](#globals-should-be-avoided-whenever-possible)
    15. [Type-stable and Type-grounded code is preferred wherever possible](#type-stable-and-type-grounded-code-is-preferred-wherever-possible)
@@ -253,7 +253,7 @@ using [SetField.jl](https://github.com/jw3126/Setfield.jl) is sufficient. The co
 the construction of immutable structs, and thus this can be more efficient if it's not too much of a
 code hassle.
 
-### Tests should attempt to cover a wide gambit of input types
+### Tests should attempt to cover a wide gamut of input types
 
 Code coverage numbers are meaningless if one does not consider the input types. For example, one can
 hit all of the code with `Array`, but that does not test whether `CuArray` is compatible! Thus it's
