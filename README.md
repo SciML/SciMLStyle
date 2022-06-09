@@ -217,8 +217,8 @@ preferred.
 Otherwise, instead of resorting to a conditional dependency using Requires.jl, it is
 preferred one creates subpackages, i.e. smaller independent packages kept within the same Github repository
 with independent versioning and package management. An example of this is seen in
-[GalacticOptim.jl](https://github.com/SciML/GalacticOptim.jl) which has subpackages like
-[GalacticBBO.jl](https://github.com/SciML/GalacticOptim.jl/tree/master/lib/GalacticBBO) for
+[Optimization.jl](https://github.com/SciML/Optimization.jl) which has subpackages like
+[OptimizationBBO.jl](https://github.com/SciML/Optimization.jl/tree/master/lib/OptimizationBBO) for
 BlackBoxOptim.jl support.
 
 Some important interface packages to know about are:
