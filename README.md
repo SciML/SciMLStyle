@@ -319,7 +319,7 @@ While you can use `A\b` to do a linear solve inside of a package, that does not 
 This interface is only sufficient for performing factorizations, and so that limits the scaling
 choices, the types of `A` that can be supported, etc. Instead, linear solves within packages should
 use LinearSolve.jl. Similarly, nonlinear solves should use NonlinearSolve.jl. Optimization should use
-GalacticOptim.jl. Etc. This allows the full generic choice to be given to the user without depending
+Optimization.jl. Etc. This allows the full generic choice to be given to the user without depending
 on every solver package (effectively recreating the generic interfaces within each package).
 
 ### Functions should capture one underlying principle
