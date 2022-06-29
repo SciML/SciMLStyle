@@ -457,6 +457,11 @@ foobar(array_data::AbstractArray{T}, item::T) where {T <: Int64} = T[
   expected and most often useful default tolerances is justified. However, if one implements `GradientDescent`, the learning
   rate needs to be adjusted for each application (based on the size of the gradient), and thus a default of
   `GradientDescent(learning_rate = 1)` is not recommended.
+- Arguments which do not have defaults should be preferrably made into positional arguments. The newer syntax of required
+  keyword arguments can be useful but should not be abused. Notable exceptions are cases where "either or" arguments are
+  accepted, for example of defining `g` or `dgdu` is sufficient, then making them both keyword arguments with `= nothing`
+  and checking that either is not `nothing` (and throwing an appropriate error) is recommended if distinct dispatches with
+  different types is not possible. 
 - When calling a function always separate your keyword arguments from your positional arguments with a semicolon.
   This avoids mistakes in ambiguous cases (such as splatting a Dict).
 - When writing a function that sends a lot of keyword arguments to another function, say sending keyword arguments to a
