@@ -1180,6 +1180,8 @@ Additionally you may find the [Julia VS-Code plugin](https://github.com/julia-vs
 
 ### JuliaFormatter
 
+**Note: the** `sciml` **style is only available in** `JuliaFormatter v1.0` **or later**
+
 One can add `.JuliaFormatter.toml` with the content
 ```toml
 style = "sciml"
