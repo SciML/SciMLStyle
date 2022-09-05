@@ -1078,7 +1078,7 @@ function mysearch(array::AbstractArray{T}, val::T) where {T}
 end
 ```
 
-- The `@doc doc""" """` formulation from the Markdown standard library should be used whenever
+- The `@doc raw""" """` formulation from the Markdown standard library should be used whenever
   there is LaTeX.
 - Only public fields of types must be documented. Undocumented fields are considered non-public internals.
 - If your method contains lots of arguments or keywords you may want to exclude them from the method
