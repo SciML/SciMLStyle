@@ -430,6 +430,25 @@ import C
 using D: d
 ```
 
+- Large sets of imports are preferred to be written in space filling lines separated by commas.
+
+```julia
+# Yes:
+using A, B, C, D
+
+# No:
+using A
+using B
+using C
+using D
+
+# No:
+using A,
+      B,
+      C,
+      D
+```
+
 - Exported variables should be considered as part of the public API, and changing their interface constitutes a
   breaking change.
 - Any exported variables should be sufficiently unique. I.e., do not export `f` as that is very likely to clash with
