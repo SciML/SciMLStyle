@@ -1,0 +1,15 @@
+name = "SciMLStyle"
+uuid = "59b18918-51b4-4202-aa6b-1b76b310ffb6"
+authors = ["Chris Rackauckas <accounts@chrisrackauckas.com> and contributors"]
+version = "0.1.0"
+
+[deps]
+
+[compat]
+julia = "1.6"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
