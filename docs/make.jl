@@ -5,7 +5,7 @@ cp(joinpath(dir, "README.md"), joinpath(dir, "docs", "src", "index.md"), force =
 
 makedocs(sitename = "SciML Style Guide for Julia",
          authors = "Chris Rackauckas",
-         modules = [],
+         modules = Module[],
          clean = true, doctest = false,
          strict = [
              :doctest,
