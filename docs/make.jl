@@ -17,7 +17,7 @@ makedocs(sitename = "SciML Style Guide for Julia",
          ],
          format = Documenter.HTML(analytics = "UA-90474609-3",
                                   assets = ["assets/favicon.ico"],
-                                  canonical = "https://scimlstyle.sciml.ai/stable/"),
+                                  canonical = "https://docs.sciml.ai/SciMLStyle/stable/"),
          pages = [
              "SciML Style Guide for Julia" => "index.md",
          ])
