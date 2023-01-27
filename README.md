@@ -33,6 +33,7 @@ the style guide.
     - [Internal choices should be exposed as options whenever possible](#internal-choices-should-be-exposed-as-options-whenever-possible)
     - [Prefer code reuse over rewrites whenever possible](#prefer-code-reuse-over-rewrites-whenever-possible)
     - [Prefer to not shadow functions](#prefer-to-not-shadow-functions)
+    - [Avoid unmaintained dependencies](#avoid-unmaintained-dependencies)
   - [Specific Rules](#specific-rules)
     - [High Level Rules](#high-level-rules)
     - [General Naming Principles](#general-naming-principles)
@@ -358,6 +359,14 @@ adding dispatches to `Base.sort` for your types if these new dispatches match th
 principle of the function. If it doesn't, prefer to use a different name. While using `MyPackage.sort`
 is not conflicting, it is going to be confusing for most people unfamiliar with your code,
 so `MyPackage.special_sort` would be more helpful to newcomers reading the code.
+
+### Avoid unmaintained dependencies
+
+Packages should only be dependend on if they have maintainers who are responsive. Good code requires
+good communities. If maintainers do not respond to breakage within 2 weeks with multiple notices,
+then all dependencies from that organization should be considered for removal. Note that some issues 
+may take a long time to fix, so it may take more time than 2 weeks to fix, it's simply that the 
+communication should be open, consistent, and timely. 
 
 ## Specific Rules
 
