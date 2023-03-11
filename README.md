@@ -98,7 +98,7 @@ If the standard for code contributions is that every PR needs to support every p
 think of, the barrier would be too high for newcomers. Instead, the principle is to be as correct as possible to
 begin with, and grow the generic support over time. All recommended functionality should be tested, any known
 generality issues should be documented in an issue (and with a `@test_broken` test when possible). However, a
-function which is known to not be GPU-compatible is not grounds to block merging, rather its an encouragement for a
+function that is known to not be GPU-compatible is not grounds to block merging, rather it is encouraged for a
 follow-up PR to improve the general type support!
 
 ### Generic code is preferred unless code is known to be specific
@@ -255,7 +255,7 @@ in which case this should be `mul!` for consistency).
 
 Similarly, when defining types, using `struct` is preferred to `mutable struct` unless mutating
 the struct is a common occurrence. Even if mutating the struct is a common occurrence, see whether
-using [SetField.jl](https://github.com/jw3126/Setfield.jl) is sufficient. The compiler will optimize
+using [Setfield.jl](https://github.com/jw3126/Setfield.jl) is sufficient. The compiler will optimize
 the construction of immutable structs, and thus this can be more efficient if it's not too much of a
 code hassle.
 
@@ -266,11 +266,11 @@ hit all of the code with `Array`, but that does not test whether `CuArray` is co
 always good to think of coverage not in terms of lines of code but in terms of type coverage. A good
 list of number types to think about are:
 
-- Float64
-- Float32
-- Complex
-- [Dual](https://github.com/JuliaDiff/ForwardDiff.jl)
-- BigFloat
+- `Float64`
+- `Float32`
+- `Complex`
+- [`Dual`](https://github.com/JuliaDiff/ForwardDiff.jl)
+- `BigFloat`
 
 Array types to think about testing are:
 
@@ -287,7 +287,7 @@ yes.
 ### Globals should be avoided whenever possible
 
 Global variables should be avoided whenever possible. When required, global variables should be
-consts and have an all uppercase name separated with underscores (e.g. `MY_CONSTANT`). They should be
+constants and have an all uppercase name separated with underscores (e.g. `MY_CONSTANT`). They should be
 defined at the top of the file, immediately after imports and exports but before an `__init__` function.
 If you truly want mutable global style behaviour you may want to look into mutable containers.
 
@@ -321,7 +321,7 @@ or
 
 ### Numerical functionality should use the appropriate generic numerical interfaces
 
-While you can use `A\b` to do a linear solve inside of a package, that does not mean that you should.
+While you can use `A\b` to do a linear solve inside a package, that does not mean that you should.
 This interface is only sufficient for performing factorizations, and so that limits the scaling
 choices, the types of `A` that can be supported, etc. Instead, linear solves within packages should
 use LinearSolve.jl. Similarly, nonlinear solves should use NonlinearSolve.jl. Optimization should use
@@ -332,7 +332,7 @@ on every solver package (effectively recreating the generic interfaces within ea
 
 Functions mean one thing. Every dispatch of `+` should be "the meaning of addition on these types".
 While in theory you could add dispatches to `+` that mean something different, that will fail in
-generic code for which `+` means addition. Thus for generic code to work, code needs to adhere to
+generic code for which `+` means addition. Thus, for generic code to work, code needs to adhere to
 one meaning for each function. Every dispatch should be an instantiation of that meaning.
 
 ### Internal choices should be exposed as options whenever possible
