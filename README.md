@@ -589,7 +589,7 @@ to a function.
 - Test includes should be written in one line, for example:
 
 ```julia
-@time @safetestset "Jacobian Tests" begin include("interface/jacobian_tests.jl") end
+@time @safetestset "Jacobian Tests" include("interface/jacobian_tests.jl")
 ```
 
 - Every test script should be fully reproducible in isolation. I.e., one should be able to copy paste that script
