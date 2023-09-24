@@ -534,22 +534,22 @@ function my_large_function(argument1,
 ### Function Argument Precedence
 
 1. **Function argument**.
-   Putting a function argument first permits the use of [`do`](@ref) blocks for passing
+   Putting a function argument first permits the use of [`do`](https://docs.julialang.org/en/v1/base/base/#do) blocks for passing
    multiline anonymous functions.
 
 2. **I/O stream**.
    Specifying the `IO` object first permits passing the function to functions such as
-   [`sprint`](@ref), e.g. `sprint(show, x)`.
+   [`sprint`](https://docs.julialang.org/en/v1/base/io-network/#Base.sprint), e.g. `sprint(show, x)`.
 
 3. **Input being mutated**.
-   For example, in [`fill!(x, v)`](@ref fill!), `x` is the object being mutated and it
+   For example, in [`fill!(x, v)`](https://docs.julialang.org/en/v1/base/arrays/#Base.fill!), `x` is the object being mutated and it
    appears before the value to be inserted into `x`.
 
 4. **Type**.
    Passing a type typically means that the output will have the given type.
-   In [`parse(Int, "1")`](@ref parse), the type comes before the string to parse.
+   In [`parse(Int, "1")`](https://docs.julialang.org/en/v1/base/numbers/#Base.parse), the type comes before the string to parse.
    There are many such examples where the type appears first, but it's useful to note that
-   in [`read(io, String)`](@ref read), the `IO` argument appears before the type, which is
+   in [`read(io, String)`](https://docs.julialang.org/en/v1/base/io-network/#Base.read), the `IO` argument appears before the type, which is
    in keeping with the order outlined here.
 
 5. **Input not being mutated**.
@@ -561,7 +561,7 @@ function my_large_function(argument1,
 
 7. **Value**.
    For associative collections, this is the value of the key-value pair(s).
-   In cases like [`fill!(x, v)`](@ref fill!), this is `v`.
+   In cases like [`fill!(x, v)`](https://docs.julialang.org/en/v1/base/arrays/#Base.fill!), this is `v`.
 
 8. **Everything else**.
    Any other arguments.
@@ -569,7 +569,7 @@ function my_large_function(argument1,
 9. **Varargs**.
    This refers to arguments that can be listed indefinitely at the end of a function call.
    For example, in `Matrix{T}(undef, dims)`, the dimensions can be given as a
-   [`Tuple`](@ref), e.g. `Matrix{T}(undef, (1,2))`, or as [`Vararg`](@ref)s,
+   [`Tuple`](https://docs.julialang.org/en/v1/base/base/#Core.Tuple), e.g. `Matrix{T}(undef, (1,2))`, or as [`Vararg`](https://docs.julialang.org/en/v1/base/base/#Core.Vararg)s,
    e.g. `Matrix{T}(undef, 1, 2)`.
 
 10. **Keyword arguments**.
