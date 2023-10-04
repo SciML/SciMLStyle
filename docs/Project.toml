@@ -1,5 +1,6 @@
 [deps]
 Documenter = "e30172f5-a6a5-5a46-863b-614d45cd2de4"
+SciMLStyle = "59b18918-51b4-4202-aa6b-1b76b310ffb6"
 
 [compat]
-Documenter = "0.27"
+Documenter = "1"
