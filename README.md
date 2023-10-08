@@ -211,6 +211,11 @@ deeper within a package. For example, if one knows that `f(u0,p)` will error unl
 should be caught at the start of the function to throw a domain specific error, for example "parameters and initial
 condition should be the same size".
 
+This contextualization should result in error messages that use terminology related to the user facing API (vs.
+referencing internal implementation details).  Ideally, such error messages should not only describe the
+issue in language that will be familiar to the user but also include suggestions, where possible, of how
+to correct the issue.
+
 ### Subpackaging and interface packages is preferred over conditional modules via Requires.jl
 
 Requires.jl should be avoided at all costs. If an interface package exists, such as
