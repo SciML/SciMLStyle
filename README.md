@@ -40,7 +40,7 @@ the style guide.
     - [Use extra precaution when running external processes](#use-extra-precaution-when-running-external-processes)
     - [Avoid eval whenever possible](#avoid-eval-whenever-possible)
     - [Avoid bounds check removal, and if done, add appropriate manual checks](#avoid-bounds-check-removal-and-if-done-add-appropriate-manual-checks)
-    - [Avoid ccall unless necessary, and use safe ccall practices when required](#avoid-ccall-and-ccall-unless-necessary-and-use-safe-ccall-practices-when-required)
+    - [Avoid ccall unless necessary, and use safe ccall practices when required](#avoid-ccall-unless-necessary-and-use-safe-ccall-practices-when-required)
     - [Validate all user inputs to avoid code injection](#validate-all-user-inputs-to-avoid-code-injection)
     - [Ensure secure random number generators are used when required](#ensure-secure-random-number-generators-are-used-when-required)
     - [Be aware of distributed computing encryption principles](#be-aware-of-distributed-computing-encryption-principles)
