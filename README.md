@@ -4,8 +4,11 @@
 [![Global Docs](https://img.shields.io/badge/docs-SciML-blue.svg)](https://docs.sciml.ai/SciMLStyle/stable/)
 
 The SciML Style Guide is a style guide for the Julia programming language. It is used by the
-[SciML Open Source Scientific Machine Learning Organization](https://sciml.ai/). As such, it is
-open to discussion with the community. Please file an issue or open a PR to discuss changes to
+[SciML Open Source Scientific Machine Learning Organization](https://sciml.ai/). It covers proper 
+styles to allow for easily high-quality, readable, robust, safety, and fast code that is easy to 
+maintain for production and deployment.
+
+It is open to discussion with the community. Please file an issue or open a PR to discuss changes to
 the style guide.
 
 **Table of Contents**
