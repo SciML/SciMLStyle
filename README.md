@@ -547,7 +547,7 @@ The fact that a shell must be explicitly invoked in Julia helps catch these kind
 be avoided. If an external shell must be used, be certain that any user data used to construct the shell command is carefully validated or escaped to avoid shell
 injection attacks.
 
-## Ensure secure random number generators are used when required
+### Ensure secure random number generators are used when required
 
 The default pseudo-random number generator in Julia, which can be accessed by calling `rand()` and `randn()`, for example, is intended for simulation purposes and
 not for applications requiring cryptographic security. An attacker can, by observing a series of random values, construct its internal state and predict future pseudo-random values.
