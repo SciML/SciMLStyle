@@ -395,18 +395,18 @@ set of operations that bypass normal checks. These operations are clearly marked
 automatically ensure it. For high reliability these constructs should be avoided or carefully inspected during code
 review. They are:
 
-* unsafe_load
-* unsafe_store!
-* unsafe_read
-* unsafe_write
-* unsafe_string
-* unsafe_wrap
-* unsafe_convert
-* unsafe_copyto!
-* unsafe_pointer_to_objref
-* ccall
-* @ccall
-* @inbounds
+- unsafe_load
+- unsafe_store!
+- unsafe_read
+- unsafe_write
+- unsafe_string
+- unsafe_wrap
+- unsafe_convert
+- unsafe_copyto!
+- unsafe_pointer_to_objref
+- ccall
+- @ccall
+- @inbounds
 
 ### Avoid non public operations in Julia Base and packages
 
@@ -519,15 +519,15 @@ Safe use of ccall depends on both automated and manual measures.
 
 What Julia does (automated):
 
-* Julia provides aliases for C types like Cint, Clong, Cchar, Csize_t, etc. It makes sure that these match what the C ABI on the machine that code is running on expects them to be.
-* The Clang.jl package automates the process of turning C header files into valid ccall invocations.
-* Pkg+BinaryBuilder.jl allows precise versioning of binary dependencies.
-* Julia objects passed directly to ccall are protected from garbage collection (GC) for the duration of the call.
+- Julia provides aliases for C types like Cint, Clong, Cchar, Csize_t, etc. It makes sure that these match what the C ABI on the machine that code is running on expects them to be.
+- The Clang.jl package automates the process of turning C header files into valid ccall invocations.
+- Pkg+BinaryBuilder.jl allows precise versioning of binary dependencies.
+- Julia objects passed directly to ccall are protected from garbage collection (GC) for the duration of the call.
 
 What you must do (manual):
-* When writing ccall signatures, programmers should always look at the signature in the C header file and make sure the signature used in Julia matches exactly.
-* Use Julia’s C type aliases. For example, if an argument in C is of type int then the corresponding type in Julia is Cint, not Int — on most platforms Int will be the same size as Clong rather than Cint.
-* If a raw pointer to memory managed by Julia’s GC is passed to C via ccall, the owning object must be preserved using GC.@preserve around the use of ccall. See the documentation of this macro for more information and examples of proper usage.
+- When writing ccall signatures, programmers should always look at the signature in the C header file and make sure the signature used in Julia matches exactly.
+- Use Julia’s C type aliases. For example, if an argument in C is of type int then the corresponding type in Julia is Cint, not Int — on most platforms Int will be the same size as Clong rather than Cint.
+- If a raw pointer to memory managed by Julia’s GC is passed to C via ccall, the owning object must be preserved using GC.@preserve around the use of ccall. See the documentation of this macro for more information and examples of proper usage.
 
 ### Validate all user inputs to avoid code injection
 
