@@ -558,7 +558,7 @@ random numbers which cannot be predicted.
 
 Julia’s distributed computing uses unencrypted TCP/IP sockets for communication by default and expects to be running on a fully trusted cluster. If `using Distributed` in your code through
 `@distributed`, `pmap`, etc., be aware that the communication channels are not encrypted. Julia opens ports for communication between processes in a distributed cluster. A pre-generated
-random cookie is necessary to successfully connect (Julia 0.5 onwards), which defeats arbitrary external connections. This mechanism is described in detail in https://github.com/JuliaLang/julia/pull/16292.
+random cookie is necessary to successfully connect (Julia 0.5 onwards), which defeats arbitrary external connections. This mechanism is described in detail in <https://github.com/JuliaLang/julia/pull/16292>.
 
 For additional security, these communication channels can be encrypted through the use of a custom ClusterManager which enables SSH port forwarding, or uses some other mechanism to encrypt the communication channel.
 
