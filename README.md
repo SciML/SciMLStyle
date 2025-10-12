@@ -11,7 +11,7 @@ maintain for production and deployment.
 It is open to discussion with the community. Please file an issue or open a PR to discuss changes to
 the style guide.
 
-**Table of Contents**
+## Table of Contents  <!-- omit from toc -->
 
 - [SciML Style Guide for Julia](#sciml-style-guide-for-julia)
   - [Code Style Badge](#code-style-badge)
