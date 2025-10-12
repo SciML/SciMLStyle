@@ -390,23 +390,23 @@ communication should be open, consistent, and timely.
 ### Avoid unsafe operations
 
 Like other high-level languages that provide strong safety guarantees by default, Julia nevertheless has a small
-set of operations that bypass normal checks. These operations are clearly marked with the prefix unsafe_. By using an
+set of operations that bypass normal checks. These operations are clearly marked with the prefix `unsafe_`. By using an
 “unsafe” operation, the programmer asserts that they know the operation is valid even though the language cannot
 automatically ensure it. For high reliability these constructs should be avoided or carefully inspected during code
 review. They are:
 
-- unsafe_load
-- unsafe_store!
-- unsafe_read
-- unsafe_write
-- unsafe_string
-- unsafe_wrap
-- unsafe_convert
-- unsafe_copyto!
-- unsafe_pointer_to_objref
-- ccall
-- @ccall
-- @inbounds
+- `unsafe_load`
+- `unsafe_store!`
+- `unsafe_read`
+- `unsafe_write`
+- `unsafe_string`
+- `unsafe_wrap`
+- `unsafe_convert`
+- `unsafe_copyto!`
+- `unsafe_pointer_to_objref`
+- `ccall`
+- `@ccall`
+- `@inbounds`
 
 ### Avoid non public operations in Julia Base and packages
 
@@ -416,7 +416,7 @@ However, it is possible to use non public names via explicit qualification, e.g.
 but should be avoided since non public operations may have unexpected invariants and behaviors, and are subject to changes in future
 releases of the language.
 
-Note that qualified names are commonly used in method definitions to clarify that a function is being extended, e.g. function Base.getindex(...) … end.
+Note that qualified names are commonly used in method definitions to clarify that a function is being extended, e.g. function `Base.getindex(...) … end`.
 Such uses do not fall under this concern.
 
 ### Always default to constructs which initialize data
@@ -479,14 +479,14 @@ Note: it is common for Julia programs to invoke `eval` or `@eval` at the top lev
 
 ### Avoid bounds check removal, and if done, add appropriate manual checks
 
-While Julia checks the bounds of all array operations by default, it is possible to manually disable bounds checks in a program using @inbounds.
+While Julia checks the bounds of all array operations by default, it is possible to manually disable bounds checks in a program using `@inbounds`.
 Note that in early versions of Julia (pre v1.9) this could be used as a performance optimization, but in later versions it can demonstrably
 reduce performance and thus one should never immediately default to bounds check removal as a performance habit.
 
 Uses of this construct should be carefully audited during code review. For maximum safety, it should be avoided or programs should be run with the
-command line option --check-bounds=yes to enable all checks regardless of manual annotations.
+command line option `--check-bounds=yes` to enable all checks regardless of manual annotations.
 
-To check a use of @inbounds for correctness, it suffices to examine all array indexing expressions (e.g. a[i]) within the expression it applies to,
+To check a use of @inbounds for correctness, it suffices to examine all array indexing expressions (e.g. `a[i]`) within the expression it applies to,
 and ensure that each index will always be within the bounds of the indexed array. For example the following common use pattern is valid:
 
 ```julia
@@ -497,7 +497,7 @@ end
 
 By inspection, the variable `i` will always be a valid index for `A`.
 
-For contrast, the following use is invalid unless A is known to be a specific type (e.g.: `Vector`)
+For contrast, the following use is invalid unless `A` is known to be a specific type (e.g.: `Vector`)
 
 ```julia
 @inbounds for i in 1:length(A)
@@ -510,7 +510,7 @@ and verify all indexing expressions.
 
 ### Avoid ccall unless necessary, and use safe ccall practices when required
 
-Calling C (and Fortran) libraries from Julia is very easy: the ccall syntax (and the more convenient @ccall macro) allow calling C libraries
+Calling C (and Fortran) libraries from Julia is very easy: the ccall syntax (and the more convenient `@ccall` macro) allow calling C libraries
 without any need for glue files or boilerplate. They do require caution, however: the programmer tells Julia what the signature of each library
 function is and if this is not done correctly, it can be the cause of crashes and thus security vulnerabilities. An exploit is just a crash that
 an attacker has arranged to fail in a worse way than it would have randomly.
@@ -527,7 +527,7 @@ What Julia does (automated):
 What you must do (manual):
 - When writing ccall signatures, programmers should always look at the signature in the C header file and make sure the signature used in Julia matches exactly.
 - Use Julia’s C type aliases. For example, if an argument in C is of type int then the corresponding type in Julia is Cint, not Int — on most platforms Int will be the same size as Clong rather than Cint.
-- If a raw pointer to memory managed by Julia’s GC is passed to C via ccall, the owning object must be preserved using GC.@preserve around the use of ccall. See the documentation of this macro for more information and examples of proper usage.
+- If a raw pointer to memory managed by Julia’s GC is passed to C via ccall, the owning object must be preserved using `GC.@preserve` around the use of ccall. See the documentation of this macro for more information and examples of proper usage.
 
 ### Validate all user inputs to avoid code injection
 
