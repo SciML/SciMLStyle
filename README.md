@@ -791,9 +791,9 @@ to a function.
   thus can "leak".
 - Test includes should be written in one line, for example:
 
-```julia
-@time @safetestset "Jacobian Tests" include("interface/jacobian_tests.jl")
-```
+  ```julia
+  @time @safetestset "Jacobian Tests" include("interface/jacobian_tests.jl")
+  ```
 
 - Every test script should be fully reproducible in isolation. I.e., one should be able to copy paste that script
   and receive the results.
@@ -818,211 +818,212 @@ to a function.
 
 - Avoid extraneous whitespace immediately inside parentheses, square brackets or braces.
 
-    ```julia
-    # Yes:
-    spam(ham[1], [eggs])
+  ```julia
+  # Yes:
+  spam(ham[1], [eggs])
 
-    # No:
-    spam( ham[ 1 ], [ eggs ] )
-    ```
+  # No:
+  spam( ham[ 1 ], [ eggs ] )
+  ```
 
 - Avoid extraneous whitespace immediately before a comma or semicolon:
 
-    ```julia
-    # Yes:
-    if x == 4 @show(x, y); x, y = y, x end
+  ```julia
+  # Yes:
+  if x == 4 @show(x, y); x, y = y, x end
 
-    # No:
-    if x == 4 @show(x , y) ; x , y = y , x end
-    ```
+  # No:
+  if x == 4 @show(x , y) ; x , y = y , x end
+  ```
 
 - Avoid whitespace around `:` in ranges. Use brackets to clarify expressions on either side.
 
-    ```julia
-    # Yes:
-    ham[1:9]
-    ham[9:-3:0]
-    ham[1:step:end]
-    ham[lower:upper-1]
-    ham[lower:upper - 1]
-    ham[lower:(upper + offset)]
-    ham[(lower + offset):(upper + offset)]
+  ```julia
+  # Yes:
+  ham[1:9]
+  ham[9:-3:0]
+  ham[1:step:end]
+  ham[lower:upper-1]
+  ham[lower:upper - 1]
+  ham[lower:(upper + offset)]
+  ham[(lower + offset):(upper + offset)]
 
-    # No:
-    ham[1: 9]
-    ham[9 : -3: 1]
-    ham[lower : upper - 1]
-    ham[lower + offset:upper + offset]  # Avoid as it is easy to read as `ham[lower + (offset:upper) + offset]`
-    ```
+  # No:
+  ham[1: 9]
+  ham[9 : -3: 1]
+  ham[lower : upper - 1]
+  ham[lower + offset:upper + offset]  # Avoid as it is easy to read as `ham[lower + (offset:upper) + offset]`
+  ```
 
 - Avoid using more than one space around an assignment (or other) operator to align it with another:
 
-    ```julia
-    # Yes:
-    x = 1
-    y = 2
-    long_variable = 3
+  ```julia
+  # Yes:
+  x = 1
+  y = 2
+  long_variable = 3
 
-    # No:
-    x             = 1
-    y             = 2
-    long_variable = 3
-    ```
+  # No:
+  x             = 1
+  y             = 2
+  long_variable = 3
+  ```
 
 - Surround most binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.), [lambda operator](https://docs.julialang.org/en/v1/manual/functions/#man-anonymous-functions-1) (`->`). Binary operators may be excluded from this guideline include: the [range operator](https://docs.julialang.org/en/v1/base/math/#Base.::) (`:`), [rational operator](https://docs.julialang.org/en/v1/base/math/#Base.://) (`//`), [exponentiation operator](https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,%20Number}) (`^`), [optional arguments/keywords](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments-1) (e.g. `f(x = 1; y = 2)`).
 
-    ```julia
-    # Yes:
-    i = j + 1
-    submitted += 1
-    x^2 < y
+  ```julia
+  # Yes:
+  i = j + 1
+  submitted += 1
+  x^2 < y
 
-    # No:
-    i=j+1
-    submitted +=1
-    x^2<y
-    ```
+  # No:
+  i=j+1
+  submitted +=1
+  x^2<y
+  ```
 
 - Avoid using whitespace between unary operands and the expression:
 
-    ```julia
-    # Yes:
-    -1
-    [1 0 -1]
+  ```julia
+  # Yes:
+  -1
+  [1 0 -1]
 
-    # No:
-    - 1
-    [1 0 - 1]  # Note: evaluates to `[1 -1]`
-    ```
+  # No:
+  - 1
+  [1 0 - 1]  # Note: evaluates to `[1 -1]`
+  ```
 
 - Avoid extraneous empty lines. Avoid empty lines between single line method definitions
-    and otherwise separate functions with one empty line, plus a comment if required:
+  and otherwise separate functions with one empty line, plus a comment if required:
 
-    ```julia
-    # Yes:
-    # Note: an empty line before the first long-form `domaths` method is optional.
-    domaths(x::Number) = x + 5
-    domaths(x::Int) = x + 10
-    function domaths(x::String)
-        return "A string is a one-dimensional extended object postulated in string theory."
-    end
+  ```julia
+  # Yes:
+  # Note: an empty line before the first long-form `domaths` method is optional.
+  domaths(x::Number) = x + 5
+  domaths(x::Int) = x + 10
+  function domaths(x::String)
+      return "A string is a one-dimensional extended object postulated in string theory."
+  end
 
-    dophilosophy() = "Why?"
+  dophilosophy() = "Why?"
 
-    # No:
-    domath(x::Number) = x + 5
+  # No:
+  domath(x::Number) = x + 5
 
-    domath(x::Int) = x + 10
-
-
-
-    function domath(x::String)
-        return "A string is a one-dimensional extended object postulated in string theory."
-    end
+  domath(x::Int) = x + 10
 
 
-    dophilosophy() = "Why?"
-    ```
+
+  function domath(x::String)
+      return "A string is a one-dimensional extended object postulated in string theory."
+  end
+
+
+  dophilosophy() = "Why?"
+  ```
 
 - Function calls that cannot fit on a single line within the line limit should be broken up such that the lines containing the opening and closing brackets are indented to the same level while the parameters of the function are indented one level further.
   In most cases, the arguments and/or keywords should each be placed on separate lines.
   Note that this rule conflicts with the typical Julia convention of indenting the next line to align with the open bracket in which the parameter is contained.
   If working in a package with a different convention, follow the convention used in the package over using this guideline.
 
-    ```julia
-    # Yes:
-    f(a, b)
-    constraint = conic_form!(SOCElemConstraint(temp2 + temp3, temp2 - temp3, 2 * temp1),
-                             unique_conic_forms)
+  ```julia
+  # Yes:
+  f(a, b)
+  constraint = conic_form!(SOCElemConstraint(temp2 + temp3, temp2 - temp3, 2 * temp1),
+                            unique_conic_forms)
 
-    # No:
-    # Note: `f` call is short enough to be on a single line
-    f(
-        a,
-        b,
-    )
-    constraint = conic_form!(SOCElemConstraint(temp2 + temp3,
-                                               temp2 - temp3, 2 * temp1),
-                             unique_conic_forms)
-    ```
+  # No:
+  # Note: `f` call is short enough to be on a single line
+  f(
+      a,
+      b,
+  )
+  constraint = conic_form!(SOCElemConstraint(temp2 + temp3,
+                                              temp2 - temp3, 2 * temp1),
+                            unique_conic_forms)
+  ```
 
 - Group similar one line statements together.
 
-    ```julia
-    # Yes:
-    foo = 1
-    bar = 2
-    baz = 3
+  ```julia
+  # Yes:
+  foo = 1
+  bar = 2
+  baz = 3
 
-    # No:
-    foo = 1
+  # No:
+  foo = 1
 
-    bar = 2
+  bar = 2
 
-    baz = 3
-    ```
+  baz = 3
+  ```
 
 - Use blank-lines to separate different multi-line blocks.
 
-    ```julia
-    # Yes:
-    if foo
-        println("Hi")
-    end
+  ```julia
+  # Yes:
+  if foo
+      println("Hi")
+  end
 
-    for i in 1:10
-        println(i)
-    end
+  for i in 1:10
+      println(i)
+  end
 
-    # No:
-    if foo
-        println("Hi")
-    end
-    for i in 1:10
-        println(i)
-    end
-    ```
+  # No:
+  if foo
+      println("Hi")
+  end
+  for i in 1:10
+      println(i)
+  end
+  ```
+
 - After a function definition, and before an end statement do not include a blank line.
 
-    ```julia
-    # Yes:
-    function foo(bar::Int64, baz::Int64)
-        return bar + baz
-    end
+  ```julia
+  # Yes:
+  function foo(bar::Int64, baz::Int64)
+      return bar + baz
+  end
 
-    # No:
-    function foo(bar::Int64, baz::Int64)
+  # No:
+  function foo(bar::Int64, baz::Int64)
 
-        return bar + baz
-    end
+      return bar + baz
+  end
 
-    # No:
-    function foo(bar::In64, baz::Int64)
-        return bar + baz
+  # No:
+  function foo(bar::In64, baz::Int64)
+      return bar + baz
 
-    end
-    ```
+  end
+  ```
 
 - Use line breaks between control flow statements and returns.
 
-    ```julia
-    # Yes:
-    function foo(bar; verbose = false)
-        if verbose
-            println("baz")
-        end
+  ```julia
+  # Yes:
+  function foo(bar; verbose = false)
+      if verbose
+          println("baz")
+      end
 
-        return bar
-    end
+      return bar
+  end
 
-    # Ok:
-    function foo(bar; verbose = false)
-        if verbose
-            println("baz")
-        end
-        return bar
-    end
-    ```
+  # Ok:
+  function foo(bar; verbose = false)
+      if verbose
+          println("baz")
+      end
+      return bar
+  end
+  ```
 
 ### NamedTuples
 
