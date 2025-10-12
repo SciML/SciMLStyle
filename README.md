@@ -74,7 +74,6 @@ the style guide.
     - [JuliaFormatter](#juliaformatter)
   - [References](#references)
 
-
 ## Code Style Badge
 
 Let contributors know your project is following the SciML Style Guide by adding the badge to your `README.md`.
@@ -732,7 +731,6 @@ function was never called on it, with a warning indicating that the buffer shoul
                             y,
                             z)
   ```
-
 
 ### Function Argument Precedence
 
