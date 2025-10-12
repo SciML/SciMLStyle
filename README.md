@@ -325,14 +325,19 @@ not contain closures.
 Furthermore, if you want to update variables in an outer scope, do so explicitly with `Ref`s or self
 defined structs.
 For example,
+
 ```julia
 map(Base.Fix2(getindex, i), vector_of_vectors)
 ```
+
 is preferred over
+
 ```julia
 map(v -> v[i], vector_of_vectors)
 ```
+
 or
+
 ```julia
 [v[i] for v in vector_of_vectors]
 ```
@@ -1420,6 +1425,7 @@ To modify these settings, open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,<
     },
 }
 ```
+
 Additionally, you may find the [Julia VS-Code plugin](https://github.com/julia-vscode/julia-vscode) useful.
 
 ### JuliaFormatter
@@ -1427,14 +1433,18 @@ Additionally, you may find the [Julia VS-Code plugin](https://github.com/julia-v
 **Note: the** `sciml` **style is only available in** `JuliaFormatter v1.0` **or later**
 
 One can add `.JuliaFormatter.toml` with the content
+
 ```toml
 style = "sciml"
 ```
+
 in the root of a repository, and run
+
 ```julia
 using JuliaFormatter, SomePackage
 format(joinpath(dirname(pathof(SomePackage)), ".."))
 ```
+
 to format the package automatically.
 
 Add [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.github/workflows/FormatCheck.yml) to enable the formatting CI. The CI will fail if the repository needs additional formatting. Thus, one should run `format` before committing.
