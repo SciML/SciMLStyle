@@ -497,7 +497,7 @@ end
 
 By inspection, the variable `i` will always be a valid index for `A`.
 
-For contrast, the following use is invalid unless A is known to be a specific type (eg: `Vector`)
+For contrast, the following use is invalid unless A is known to be a specific type (e.g.: `Vector`)
 
 ```julia
 @inbounds for i in 1:length(A)
