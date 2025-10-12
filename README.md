@@ -226,7 +226,7 @@ should be caught at the start of the function to throw a domain specific error, 
 condition should be the same size".
 
 This contextualization should result in error messages that use terminology related to the user facing API (vs.
-referencing internal implementation details).  Ideally, such error messages should not only describe the
+referencing internal implementation details). Ideally, such error messages should not only describe the
 issue in language that will be familiar to the user but also include suggestions, where possible, of how
 to correct the issue.
 
