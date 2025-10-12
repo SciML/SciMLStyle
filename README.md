@@ -12,6 +12,7 @@ It is open to discussion with the community. Please file an issue or open a PR t
 the style guide.
 
 **Table of Contents**
+
 - [SciML Style Guide for Julia](#sciml-style-guide-for-julia)
   - [Code Style Badge](#code-style-badge)
   - [Overarching Dogmas of the SciML Style](#overarching-dogmas-of-the-sciml-style)
@@ -529,6 +530,7 @@ What Julia does (automated):
 - Julia objects passed directly to ccall are protected from garbage collection (GC) for the duration of the call.
 
 What you must do (manual):
+
 - When writing ccall signatures, programmers should always look at the signature in the C header file and make sure the signature used in Julia matches exactly.
 - Use Julia’s C type aliases. For example, if an argument in C is of type int then the corresponding type in Julia is Cint, not Int — on most platforms Int will be the same size as Clong rather than Cint.
 - If a raw pointer to memory managed by Julia’s GC is passed to C via ccall, the owning object must be preserved using `GC.@preserve` around the use of ccall. See the documentation of this macro for more information and examples of proper usage.
