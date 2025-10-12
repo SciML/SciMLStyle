@@ -72,7 +72,7 @@ the style guide.
     - [Line Endings](#line-endings)
     - [VS-Code Settings](#vs-code-settings)
     - [JuliaFormatter](#juliaformatter)
-- [References](#references)
+  - [References](#references)
 
 
 ## Code Style Badge
@@ -1432,7 +1432,7 @@ to format the package automatically.
 
 Add [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.github/workflows/FormatCheck.yml) to enable the formatting CI. The CI will fail if the repository needs additional formatting. Thus, one should run `format` before committing.
 
-# References
+## References
 
 Many of these style choices were derived from the [Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/),
 the [YASGuide](https://github.com/jrevels/YASGuide), and the [Blue style guide](https://github.com/invenia/BlueStyle#module-imports).
