@@ -816,7 +816,7 @@ to a function.
 - CI scripts should test the Long-Term Support (LTS) release and the current stable release. Nightly tests are only
   necessary for packages with a heavy reliance on specific compiler details.
 - Any package supporting GPUs should include continuous integration for GPUs.
-- [Doctests](https://juliadocs.github.io/Documenter.jl/stable/man/doctests/) should be enabled except for the examples
+- [Doctests](https://documenter.juliadocs.org/stable/man/doctests/) should be enabled except for the examples
   that are computationally-prohibitive to have as part of continuous integration.
 
 ### Whitespace
@@ -1454,6 +1454,4 @@ Add [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.g
 ## References
 
 Many of these style choices were derived from the [Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/),
-the [YASGuide](https://github.com/jrevels/YASGuide), and the [Blue style guide](https://github.com/invenia/BlueStyle#module-imports).
-Additionally, many tips and requirements from the [JuliaHub Secure Coding Practices](https://juliahub.com/company/resources/white-papers/secure-julia-coding-practices/index.html)
-manual were incorporated into this style.
+the [YASGuide](https://github.com/jrevels/YASGuide), and the [Blue style guide](https://github.com/JuliaDiff/BlueStyle).
