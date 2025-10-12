@@ -606,18 +606,18 @@ function was never called on it, with a warning indicating that the buffer shoul
   Only use inline comments if they fit within the line length limit. If your comment
   cannot be fitted inline, then place the comment above the content to which it refers:
 
-```julia
-# Yes:
+  ```julia
+  # Yes:
 
-# Number of nodes to predict. Again, an issue with the workflow order. Should be updated
-# after data is fetched.
-p = 1
+  # Number of nodes to predict. Again, an issue with the workflow order. Should be updated
+  # after data is fetched.
+  p = 1
 
-# No:
+  # No:
 
-p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Should be
-# updated after data is fetched.
-```
+  p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Should be
+  # updated after data is fetched.
+  ```
 
 - In general, comments above a line of code or function are preferred to inline comments.
 
@@ -628,39 +628,39 @@ p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Sh
   `using Dates: Year, Month, Week, Day, Hour, Minute, Second, Millisecond`.
 - Import and using statements should be separated, and should be divided by a blank line.
 
-```julia
-# Yes:
-import A: a
-import C
+  ```julia
+  # Yes:
+  import A: a
+  import C
 
-using B
-using D: d
+  using B
+  using D: d
 
-# No:
-import A: a
-using B
-import C
-using D: d
-```
+  # No:
+  import A: a
+  using B
+  import C
+  using D: d
+  ```
 
-- Large sets of imports are preferred to be written in space filling lines separated by commas.
+  - Large sets of imports are preferred to be written in space filling lines separated by commas.
 
-```julia
-# Yes:
-using A, B, C, D
+  ```julia
+  # Yes:
+  using A, B, C, D
 
-# No:
-using A
-using B
-using C
-using D
+  # No:
+  using A
+  using B
+  using C
+  using D
 
-# No:
-using A,
-      B,
-      C,
-      D
-```
+  # No:
+  using A,
+        B,
+        C,
+        D
+  ```
 
 - Exported variables should be considered part of the public API, and changing their interface constitutes a
   breaking change.
@@ -677,15 +677,15 @@ using A,
 
 - Only use short-form function definitions when they fit on a single line:
 
-```julia
-# Yes:
-foo(x::Int64) = abs(x) + 3
+  ```julia
+  # Yes:
+  foo(x::Int64) = abs(x) + 3
 
-# No:
-foobar(array_data::AbstractArray{T}, item::T) where {T <: Int64} = T[
-    abs(x) * abs(item) + 3 for x in array_data
-]
-```
+  # No:
+  foobar(array_data::AbstractArray{T}, item::T) where {T <: Int64} = T[
+      abs(x) * abs(item) + 3 for x in array_data
+  ]
+  ```
 
 - Inputs should be required unless a default is historically expected or likely to be applicable to >95% of use cases.
   For example, the tolerance of a differential equation solver was set to a default of `abstol=1e-6,reltol=1e-3` as a
@@ -716,22 +716,22 @@ foobar(array_data::AbstractArray{T}, item::T) where {T <: Int64} = T[
   a line and start each new row with the same indentation, preferably at the same column as the `(` but this can be moved
   left if the function name is very long. For example:
 
-```julia
-# Yes
-function my_large_function(argument1, argument2,
-                           argument3, argument4,
-                           argument5, x, y, z)
+  ```julia
+  # Yes
+  function my_large_function(argument1, argument2,
+                            argument3, argument4,
+                            argument5, x, y, z)
 
-# No
-function my_large_function(argument1,
-                           argument2,
-                           argument3,
-                           argument4,
-                           argument5,
-                           x,
-                           y,
-                           z)
-```
+  # No
+  function my_large_function(argument1,
+                            argument2,
+                            argument3,
+                            argument4,
+                            argument5,
+                            x,
+                            y,
+                            z)
+  ```
 
 
 ### Function Argument Precedence
@@ -1046,17 +1046,17 @@ xy = (;x=1,y=2)
 
 - Floating-point numbers should always include a leading and/or trailing zero:
 
-```julia
-# Yes:
-0.1
-2.0
-3.0f0
+  ```julia
+  # Yes:
+  0.1
+  2.0
+  3.0f0
 
-# No:
-.1
-2.
-3.f0
-```
+  # No:
+  .1
+  2.
+  3.f0
+  ```
 
 - Always prefer the type `Int` to `Int32` or `Int64` unless one has a specific reason
   to choose the bit size.
@@ -1188,14 +1188,14 @@ end
 
 - Do not add spaces between assignments when there are multiple assignments.
 
-```julia
-Yes:
-@parameters a = b
-@parameters a=b c=d
+  ```julia
+  Yes:
+  @parameters a = b
+  @parameters a=b c=d
 
-No:
-@parameters a = b c = d
-```
+  No:
+  @parameters a = b c = d
+  ```
 
 ### Types and Type Annotations
 
@@ -1211,13 +1211,13 @@ No:
 - Use [Semantic Versioning](https://semver.org/)
 - For simplicity, avoid including the default caret specifier when specifying package version requirements.
 
-```julia
-# Yes:
-DataFrames = "0.17"
+  ```julia
+  # Yes:
+  DataFrames = "0.17"
 
-# No:
-DataFrames = "^0.17"
-```
+  # No:
+  DataFrames = "^0.17"
+  ```
 
 - For accuracy, do not use constructs like `>=` to avoid upper bounds.
 - Every dependency should have a bound.
@@ -1252,64 +1252,64 @@ DataFrames = "^0.17"
 - Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be concise.
 - Docstring lines should be wrapped at 92 characters.
 
-```julia
-"""
-    bar(x[, y])
+  ```julia
+  """
+      bar(x[, y])
 
-Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between
-all pairs of columns of `x`.
-"""
-function bar(x, y) ...
-```
+  Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between
+  all pairs of columns of `x`.
+  """
+  function bar(x, y) ...
+  ```
 
 - It is recommended that you have a blank line between the headings and the content when the content is of sufficient length.
 - Try to be consistent within a docstring whether you use this additional whitespace.
 - Follow one of the following templates for types and functions when possible:
 
-Type Template (should be skipped if it is redundant with the constructor(s) docstring):
+  Type Template (should be skipped if it is redundant with the constructor(s) docstring):
 
-```julia
-"""
-    MyArray{T, N}
+  ```julia
+  """
+      MyArray{T, N}
 
-My super awesome array wrapper!
+  My super awesome array wrapper!
 
-# Fields
-- `data::AbstractArray{T, N}`: stores the array being wrapped
-- `metadata::Dict`: stores metadata about the array
-"""
-struct MyArray{T, N} <: AbstractArray{T, N}
-    data::AbstractArray{T, N}
-    metadata::Dict
-end
-```
+  # Fields
+  - `data::AbstractArray{T, N}`: stores the array being wrapped
+  - `metadata::Dict`: stores metadata about the array
+  """
+  struct MyArray{T, N} <: AbstractArray{T, N}
+      data::AbstractArray{T, N}
+      metadata::Dict
+  end
+  ```
 
-Function Template (only required for exported functions):
+  Function Template (only required for exported functions):
 
-```julia
-"""
-    mysearch(array::MyArray{T}, val::T; verbose = true) where {T} -> Int
+  ```julia
+  """
+      mysearch(array::MyArray{T}, val::T; verbose = true) where {T} -> Int
 
-Searches the `array` for the `val`. For some reason we don't want to use Julia's
-builtin search :)
+  Searches the `array` for the `val`. For some reason we don't want to use Julia's
+  builtin search :)
 
-# Arguments
-- `array::MyArray{T}`: the array to search
-- `val::T`: the value to search for
+  # Arguments
+  - `array::MyArray{T}`: the array to search
+  - `val::T`: the value to search for
 
-# Keywords
-- `verbose::Bool = true`: print out progress details
+  # Keywords
+  - `verbose::Bool = true`: print out progress details
 
-# Returns
-- `Int`: the index where `val` is located in the `array`
+  # Returns
+  - `Int`: the index where `val` is located in the `array`
 
-# Throws
-- `NotFoundError`: I guess we could throw an error if `val` isn't found.
-"""
-function mysearch(array::AbstractArray{T}, val::T) where {T}
-    ...
-end
-```
+  # Throws
+  - `NotFoundError`: I guess we could throw an error if `val` isn't found.
+  """
+  function mysearch(array::AbstractArray{T}, val::T) where {T}
+      ...
+  end
+  ```
 
 - The `@doc doc""" """` formulation from the Markdown standard library should be used whenever
   there is LaTeX.
@@ -1317,67 +1317,67 @@ end
 - If your method contains lots of arguments or keywords, you may want to exclude them from the method
   signature on the first line and instead use `args...` and/or `kwargs...`.
 
-```julia
-"""
-    Manager(args...; kwargs...) -> Manager
+  ```julia
+  """
+      Manager(args...; kwargs...) -> Manager
 
-A cluster manager which spawns workers.
+  A cluster manager which spawns workers.
 
-# Arguments
+  # Arguments
 
-- `min_workers::Integer`: The minimum number of workers to spawn or an exception is thrown
-- `max_workers::Integer`: The requested number of workers to spawn
+  - `min_workers::Integer`: The minimum number of workers to spawn or an exception is thrown
+  - `max_workers::Integer`: The requested number of workers to spawn
 
-# Keywords
+  # Keywords
 
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the
-    definition used within the current instance.
-- `name::AbstractString`: ...
-- `queue::AbstractString`: ...
-"""
-function Manager(...)
-    ...
-end
-```
+  - `definition::AbstractString`: Name of the job definition to use. Defaults to the
+      definition used within the current instance.
+  - `name::AbstractString`: ...
+  - `queue::AbstractString`: ...
+  """
+  function Manager(...)
+      ...
+  end
+  ```
 
 - Feel free to document multiple methods for a function within the same docstring. Be careful to only do this for functions you have defined.
 
-```julia
-"""
-    Manager(max_workers; kwargs...)
-    Manager(min_workers:max_workers; kwargs...)
-    Manager(min_workers, max_workers; kwargs...)
+  ```julia
+  """
+      Manager(max_workers; kwargs...)
+      Manager(min_workers:max_workers; kwargs...)
+      Manager(min_workers, max_workers; kwargs...)
 
-A cluster manager which spawns workers.
+  A cluster manager which spawns workers.
 
-# Arguments
+  # Arguments
 
-- `min_workers::Int`: The minimum number of workers to spawn or an exception is thrown
-- `max_workers::Int`: The requested number of workers to spawn
+  - `min_workers::Int`: The minimum number of workers to spawn or an exception is thrown
+  - `max_workers::Int`: The requested number of workers to spawn
 
-# Keywords
+  # Keywords
 
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the
-    definition used within the current instance.
-- `name::AbstractString`: ...
-- `queue::AbstractString`: ...
-"""
-function Manager end
+  - `definition::AbstractString`: Name of the job definition to use. Defaults to the
+      definition used within the current instance.
+  - `name::AbstractString`: ...
+  - `queue::AbstractString`: ...
+  """
+  function Manager end
 
-```
+  ```
 
 - If the documentation for bullet-point exceeds 92 characters, the line should be wrapped and slightly indented.
   Avoid aligning the text to the `:`.
 
-```julia
-"""
-...
+  ```julia
+  """
+  ...
 
-# Keywords
-- `definition::AbstractString`: Name of the job definition to use. Defaults to the
-    definition used within the current instance.
-"""
-```
+  # Keywords
+  - `definition::AbstractString`: Name of the job definition to use. Defaults to the
+      definition used within the current instance.
+  """
+  ```
 
 ### Error Handling
 
