@@ -598,7 +598,7 @@ function was never called on it, with a warning indicating that the buffer shoul
 ### Comments
 
 - `TODO` to mark todo comments and `XXX` to mark comments about currently broken code
-- Quote code in comments using backticks (e.g. `` `variable_name` ``).
+- Quote code in comments using backticks (e.g. ``` `variable_name` ```).
 - When possible, code should be changed to incorporate information that would have been in
   a comment. For example, instead of commenting `# fx applies the effects to a tree`, simply
   change the function and variable names `apply_effects(tree)`.
