@@ -1,7 +1,16 @@
 using Documenter
 
 dir = @__DIR__() * "/.."
-cp(joinpath(dir, "README.md"), joinpath(dir, "docs", "src", "index.md"), force = true)
+
+# Copy README.md to index.md and prepend @meta block for correct EditURL
+readme_content = read(joinpath(dir, "README.md"), String)
+index_content = """
+```@meta
+EditURL = "https://github.com/SciML/SciMLStyle/blob/main/README.md"
+```
+
+""" * readme_content
+write(joinpath(dir, "docs", "src", "index.md"), index_content)
 
 makedocs(sitename = "SciML Style Guide for Julia",
          authors = "Chris Rackauckas",
