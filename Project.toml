@@ -1,7 +1,7 @@
 name = "SciMLStyle"
 uuid = "59b18918-51b4-4202-aa6b-1b76b310ffb6"
 authors = ["Chris Rackauckas <accounts@chrisrackauckas.com> and contributors"]
-version = "0.1.0"
+version = "1.0.0"
 
 [deps]
 
