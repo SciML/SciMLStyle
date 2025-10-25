@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><title>SciML Style Guide for Julia · SciML Style Guide for Julia</title><meta name="title" content="SciML Style Guide for Julia · SciML Style Guide for Julia"/><meta property="og:title" content="SciML Style Guide for Julia · SciML Style Guide for Julia"/><meta property="twitter:title" content="SciML Style Guide for Julia · SciML Style Guide for Julia"/><meta name="description" content="Documentation for SciML Style Guide for Julia."/><meta property="og:description" content="Documentation for SciML Style Guide for Julia."/><meta property="twitter:description" content="Documentation for SciML Style Guide for Julia."/><meta property="og:url" content="https://docs.sciml.ai/SciMLStyle/stable/"/><meta property="twitter:url" content="https://docs.sciml.ai/SciMLStyle/stable/"/><link rel="canonical" href="https://docs.sciml.ai/SciMLStyle/stable/"/><script data-outdated-warner src="assets/warner.js"></script><link href="https://cdnjs.cloudflare.com/ajax/libs/lato-font/3.0.0/css/lato-font.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/juliamono/0.050/juliamono.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" rel="stylesheet" type="text/css"/><link href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.8/katex.min.css" rel="stylesheet" type="text/css"/><script>documenterBaseURL="."</script><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" data-main="assets/documenter.js"></script><script src="search_index.js"></script><script src="siteinfo.js"></script><script src="../versions.js"></script><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-mocha.css" data-theme-name="catppuccin-mocha"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-macchiato.css" data-theme-name="catppuccin-macchiato"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-frappe.css" data-theme-name="catppuccin-frappe"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/catppuccin-latte.css" data-theme-name="catppuccin-latte"/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-dark.css" data-theme-name="documenter-dark" data-theme-primary-dark/><link class="docs-theme-link" rel="stylesheet" type="text/css" href="assets/themes/documenter-light.css" data-theme-name="documenter-light" data-theme-primary/><script src="assets/themeswap.js"></script><link href="assets/favicon.ico" rel="icon" type="image/x-icon"/></head><body><div id="documenter"><nav class="docs-sidebar"><a class="docs-logo" href><img src="assets/logo.png" alt="SciML Style Guide for Julia logo"/></a><div class="docs-package-name"><span class="docs-autofit"><a href>SciML Style Guide for Julia</a></span></div><button class="docs-search-query input is-rounded is-small is-clickable my-2 mx-auto py-1 px-2" id="documenter-search-query">Search docs (Ctrl + /)</button><ul class="docs-menu"><li class="is-active"><a class="tocitem" href>SciML Style Guide for Julia</a><ul class="internal"><li><a class="tocitem" href="#Table-of-Contents-!–-omit-from-toc-–"><span>Table of Contents  &lt;!– omit from toc –&gt;</span></a></li><li><a class="tocitem" href="#Code-Style-Badge"><span>Code Style Badge</span></a></li><li><a class="tocitem" href="#Overarching-Dogmas-of-the-SciML-Style"><span>Overarching Dogmas of the SciML Style</span></a></li><li><a class="tocitem" href="#Specific-Rules"><span>Specific Rules</span></a></li><li class="toplevel"><a class="tocitem" href="#Yes:"><span>Yes:</span></a></li><li class="toplevel"><a class="tocitem" href="#No:"><span>No:</span></a></li><li class="toplevel"><a class="tocitem" href="#Yes:-2"><span>Yes:</span></a></li><li class="toplevel"><a class="tocitem" href="#No:-2"><span>No:</span></a></li><li class="toplevel"><a class="tocitem" href="#Yes:-3"><span>Yes:</span></a></li><li class="toplevel"><a class="tocitem" href="#Yes"><span>Yes</span></a></li><li class="toplevel"><a class="tocitem" href="#No:-3"><span>No:</span></a></li><li class="toplevel"><a class="tocitem" href="#Yes:-4"><span>Yes:</span></a></li><li class="toplevel"><a class="tocitem" href="#No:-4"><span>No:</span></a></li><li><a class="tocitem" href="#References"><span>References</span></a></li></ul></li></ul><div class="docs-version-selector field has-addons"><div class="control"><span class="docs-label button is-static is-size-7">Version</span></div><div class="docs-selector control is-expanded"><div class="select is-fullwidth is-size-7"><select id="documenter-version-selector"></select></div></div></div></nav><div class="docs-main"><header class="docs-navbar"><a class="docs-sidebar-button docs-navbar-link fa-solid fa-bars is-hidden-desktop" id="documenter-sidebar-button" href="#"></a><nav class="breadcrumb"><ul class="is-hidden-mobile"><li class="is-active"><a href>SciML Style Guide for Julia</a></li></ul><ul class="is-hidden-tablet"><li class="is-active"><a href>SciML Style Guide for Julia</a></li></ul></nav><div class="docs-right"><a class="docs-navbar-link" href="https://github.com/SciML/SciMLStyle" title="View the repository on GitHub"><span class="docs-icon fa-brands"></span><span class="docs-label is-hidden-touch">GitHub</span></a><a class="docs-navbar-link" href="https://github.com/SciML/SciMLStyle/blob/main/README.md" title="View source on GitHub"><span class="docs-icon fa-solid"></span></a><a class="docs-settings-button docs-navbar-link fa-solid fa-gear" id="documenter-settings-button" href="#" title="Settings"></a><a class="docs-article-toggle-button fa-solid fa-chevron-up" id="documenter-article-toggle-button" href="javascript:;" title="Collapse all docstrings"></a></div></header><article class="content" id="documenter-page"><h1 id="SciML-Style-Guide-for-Julia"><a class="docs-heading-anchor" href="#SciML-Style-Guide-for-Julia">SciML Style Guide for Julia</a><a id="SciML-Style-Guide-for-Julia-1"></a><a class="docs-heading-anchor-permalink" href="#SciML-Style-Guide-for-Julia" title="Permalink"></a></h1><p><a href="https://github.com/SciML/SciMLStyle"><img src="https://img.shields.io/static/v1?label=code%20style&amp;message=SciML&amp;color=9558b2&amp;labelColor=389826" alt="SciML Code Style"/></a> <a href="https://docs.sciml.ai/SciMLStyle/stable/"><img src="https://img.shields.io/badge/docs-SciML-blue.svg" alt="Global Docs"/></a></p><p>The SciML Style Guide is a style guide for the Julia programming language. It is used by the <a href="https://sciml.ai/">SciML Open Source Scientific Machine Learning Organization</a>. It covers proper styles to allow for easily high-quality, readable, robust, safety, and fast code that is easy to maintain for production and deployment.</p><p>It is open to discussion with the community. Please file an issue or open a PR to discuss changes to the style guide.</p><h2 id="Table-of-Contents-!–-omit-from-toc-–"><a class="docs-heading-anchor" href="#Table-of-Contents-!–-omit-from-toc-–">Table of Contents  &lt;!– omit from toc –&gt;</a><a id="Table-of-Contents-!–-omit-from-toc-–-1"></a><a class="docs-heading-anchor-permalink" href="#Table-of-Contents-!–-omit-from-toc-–" title="Permalink"></a></h2><ul><li><a href="#SciML-Style-Guide-for-Julia">SciML Style Guide for Julia</a><ul><li><a href="#Code-Style-Badge">Code Style Badge</a></li><li><a href="#Overarching-Dogmas-of-the-SciML-Style">Overarching Dogmas of the SciML Style</a><ul><li><a href="#Consistency-vs-Adherence">Consistency vs Adherence</a></li><li><a href="#Community-Contribution-Guidelines">Community Contribution Guidelines</a></li><li><a href="#Open-source-contributions-are-allowed-to-start-small-and-grow-over-time">Open source contributions are allowed to start small and grow over time</a></li><li><a href="#Generic-code-is-preferred-unless-code-is-known-to-be-specific">Generic code is preferred unless code is known to be specific</a></li><li><a href="#Internal-types-should-match-the-types-used-by-users-when-possible">Internal types should match the types used by users when possible</a></li><li><a href="#Trait-definition-and-adherence-to-generic-interface-is-preferred-when-possible">Trait definition and adherence to generic interface is preferred when possible</a></li><li><a href="#Macros-should-be-limited-and-only-be-used-for-syntactic-sugar">Macros should be limited and only be used for syntactic sugar</a></li><li><a href="#Errors-should-be-caught-as-high-as-possible,-and-error-messages-should-be-contextualized-for-newcomers">Errors should be caught as high as possible, and error messages should be contextualized for newcomers</a></li><li><a href="#Subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-Requires.jl">Subpackaging and interface packages is preferred over conditional modules via Requires.jl</a></li><li><a href="#Functions-should-either-attempt-to-be-non-allocating-and-reuse-caches,-or-treat-inputs-as-immutable">Functions should either attempt to be non-allocating and reuse caches, or treat inputs as immutable</a></li><li><a href="#Out-Of-Place-and-Immutability-is-preferred-when-sufficient-performant">Out-Of-Place and Immutability is preferred when sufficient performant</a></li><li><a href="#Tests-should-attempt-to-cover-a-wide-gamut-of-input-types">Tests should attempt to cover a wide gamut of input types</a></li><li><a href="#When-in-doubt,-a-submodule-should-become-a-subpackage-or-separate-package">When in doubt, a submodule should become a subpackage or separate package</a></li><li><a href="#Globals-should-be-avoided-whenever-possible">Globals should be avoided whenever possible</a></li><li><a href="#Type-stable-and-Type-grounded-code-is-preferred-wherever-possible">Type-stable and Type-grounded code is preferred wherever possible</a></li><li><a href="#Closures-should-be-avoided-whenever-possible">Closures should be avoided whenever possible</a></li><li><a href="#Numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces">Numerical functionality should use the appropriate generic numerical interfaces</a></li><li><a href="#Functions-should-capture-one-underlying-principle">Functions should capture one underlying principle</a></li><li><a href="#Internal-choices-should-be-exposed-as-options-whenever-possible">Internal choices should be exposed as options whenever possible</a></li><li><a href="#Prefer-code-reuse-over-rewrites-whenever-possible">Prefer code reuse over rewrites whenever possible</a></li><li><a href="#Prefer-to-not-shadow-functions">Prefer to not shadow functions</a></li><li><a href="#Avoid-unmaintained-dependencies">Avoid unmaintained dependencies</a></li><li><a href="#Avoid-unsafe-operations">Avoid unsafe operations</a></li><li><a href="#Avoid-non-public-operations-in-Julia-Base-and-packages">Avoid non public operations in Julia Base and packages</a></li><li><a href="#Always-default-to-constructs-which-initialize-data">Always default to constructs which initialize data</a></li><li><a href="#Use-extra-precaution-when-running-external-processes">Use extra precaution when running external processes</a></li><li><a href="#Avoid-eval-whenever-possible">Avoid eval whenever possible</a></li><li><a href="#Avoid-bounds-check-removal,-and-if-done,-add-appropriate-manual-checks">Avoid bounds check removal, and if done, add appropriate manual checks</a></li><li><a href="#Avoid-ccall-unless-necessary,-and-use-safe-ccall-practices-when-required">Avoid ccall unless necessary, and use safe ccall practices when required</a></li><li><a href="#Validate-all-user-inputs-to-avoid-code-injection">Validate all user inputs to avoid code injection</a></li><li><a href="#Ensure-secure-random-number-generators-are-used-when-required">Ensure secure random number generators are used when required</a></li><li><a href="#Be-aware-of-distributed-computing-encryption-principles">Be aware of distributed computing encryption principles</a></li><li><a href="#Always-immediately-flush-secret-data-after-handling">Always immediately flush secret data after handling</a></li></ul></li><li><a href="#Specific-Rules">Specific Rules</a><ul><li><a href="#High-Level-Rules">High Level Rules</a></li><li><a href="#General-Naming-Principles">General Naming Principles</a></li><li><a href="#Comments">Comments</a></li><li><a href="#Modules">Modules</a></li><li><a href="#Functions">Functions</a></li><li><a href="#Function-Argument-Precedence">Function Argument Precedence</a></li><li><a href="#Tests-and-Continuous-Integration">Tests and Continuous Integration</a></li><li><a href="#Whitespace">Whitespace</a></li><li><a href="#NamedTuples">NamedTuples</a></li><li><a href="#Numbers">Numbers</a></li><li><a href="#Ternary-Operator">Ternary Operator</a></li><li><a href="#For-loops">For loops</a></li><li><a href="#Function-Type-Annotations">Function Type Annotations</a></li><li><a href="#Struct-Type-Annotations">Struct Type Annotations</a></li><li><a href="#Macros">Macros</a></li><li><a href="#Types-and-Type-Annotations">Types and Type Annotations</a></li><li><a href="#Package-version-specifications">Package version specifications</a></li><li><a href="#Documentation">Documentation</a></li><li><a href="#Error-Handling">Error Handling</a></li><li><a href="#Arrays">Arrays</a></li><li><a href="#Line-Endings">Line Endings</a></li><li><a href="#VS-Code-Settings">VS-Code Settings</a></li><li><a href="#JuliaFormatter">JuliaFormatter</a></li></ul></li><li><a href="#References">References</a></li></ul></li></ul><h2 id="Code-Style-Badge"><a class="docs-heading-anchor" href="#Code-Style-Badge">Code Style Badge</a><a id="Code-Style-Badge-1"></a><a class="docs-heading-anchor-permalink" href="#Code-Style-Badge" title="Permalink"></a></h2><p>Let contributors know your project is following the SciML Style Guide by adding the badge to your <code>README.md</code>.</p><pre><code class="language-md hljs">[![SciML Code Style](https://img.shields.io/static/v1?label=code%20style&amp;message=SciML&amp;color=9558b2&amp;labelColor=389826)](https://github.com/SciML/SciMLStyle)</code></pre><h2 id="Overarching-Dogmas-of-the-SciML-Style"><a class="docs-heading-anchor" href="#Overarching-Dogmas-of-the-SciML-Style">Overarching Dogmas of the SciML Style</a><a id="Overarching-Dogmas-of-the-SciML-Style-1"></a><a class="docs-heading-anchor-permalink" href="#Overarching-Dogmas-of-the-SciML-Style" title="Permalink"></a></h2><h3 id="Consistency-vs-Adherence"><a class="docs-heading-anchor" href="#Consistency-vs-Adherence">Consistency vs Adherence</a><a id="Consistency-vs-Adherence-1"></a><a class="docs-heading-anchor-permalink" href="#Consistency-vs-Adherence" title="Permalink"></a></h3><p>According to PEP8:</p><blockquote><p>A style guide is about consistency. Consistency with this style guide is important. Consistency within a project is more important. Consistency within one module or function is the most important.</p><p>But most importantly: know when to be inconsistent – sometimes the style guide just doesn&#39;t apply. When in doubt, use your best judgment. Look at other examples and decide what looks best. And don&#39;t hesitate to ask!</p></blockquote><p>Some code within the SciML organization is old, on life support, donated by researchers to be maintained. Consistency is the number one goal, so updating to match the style guide should happen on a repo-by-repo basis, i.e. do not update one file to match the style guide (leaving all other files behind).</p><h3 id="Community-Contribution-Guidelines"><a class="docs-heading-anchor" href="#Community-Contribution-Guidelines">Community Contribution Guidelines</a><a id="Community-Contribution-Guidelines-1"></a><a class="docs-heading-anchor-permalink" href="#Community-Contribution-Guidelines" title="Permalink"></a></h3><p>For a comprehensive set of community contribution guidelines, refer to <a href="https://github.com/SciML/ColPrac">ColPrac</a>. A relevant point to highlight PRs should do one thing. In the context of style, this means that PRs that update the style of a package&#39;s code should not be mixed with fundamental code contributions. This separation makes it easier to ensure that large style improvements are isolated from substantive (and potentially breaking) code changes.</p><h3 id="Open-source-contributions-are-allowed-to-start-small-and-grow-over-time"><a class="docs-heading-anchor" href="#Open-source-contributions-are-allowed-to-start-small-and-grow-over-time">Open source contributions are allowed to start small and grow over time</a><a id="Open-source-contributions-are-allowed-to-start-small-and-grow-over-time-1"></a><a class="docs-heading-anchor-permalink" href="#Open-source-contributions-are-allowed-to-start-small-and-grow-over-time" title="Permalink"></a></h3><p>If the standard for code contributions is that every PR needs to support every possible input type that anyone can think of, the barrier would be too high for newcomers. Instead, the principle is to be as correct as possible to begin with, and grow the generic support over time. All recommended functionality should be tested, and any known generality issues should be documented in an issue (and with a <code>@test_broken</code> test when possible). However, a function that is known to not be GPU-compatible is not grounds to block merging, rather it is encouraged for a follow-up PR to improve the general type support!</p><h3 id="Generic-code-is-preferred-unless-code-is-known-to-be-specific"><a class="docs-heading-anchor" href="#Generic-code-is-preferred-unless-code-is-known-to-be-specific">Generic code is preferred unless code is known to be specific</a><a id="Generic-code-is-preferred-unless-code-is-known-to-be-specific-1"></a><a class="docs-heading-anchor-permalink" href="#Generic-code-is-preferred-unless-code-is-known-to-be-specific" title="Permalink"></a></h3><p>For example, the code:</p><pre><code class="language-julia hljs">function f(A, B)
+    for i in 1:length(A)
+        A[i] = A[i] + B[i]
+    end
+end</code></pre><p>would not be preferred for two reasons. One is that it assumes <code>A</code> uses one-based indexing, which would fail in cases like <a href="https://github.com/JuliaArrays/OffsetArrays.jl">OffsetArrays</a> and <a href="https://github.com/JuliaArrays/FFTViews.jl">FFTViews</a>. Another issue is that it requires indexing, while not all array types support indexing (for example, <a href="https://github.com/JuliaGPU/CuArrays.jl">CuArrays</a>). A more generic and compatible implementation of this function would be to use broadcast, for example:</p><pre><code class="language-julia hljs">function f(A, B)
+    @. A = A + B
+end</code></pre><p>which would allow support for a wider variety of array types.</p><h3 id="Internal-types-should-match-the-types-used-by-users-when-possible"><a class="docs-heading-anchor" href="#Internal-types-should-match-the-types-used-by-users-when-possible">Internal types should match the types used by users when possible</a><a id="Internal-types-should-match-the-types-used-by-users-when-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Internal-types-should-match-the-types-used-by-users-when-possible" title="Permalink"></a></h3><p>If <code>f(A)</code> takes the input of some collections and computes an output from those collections, then it should be expected that if the user gives <code>A</code> as an <code>Array</code>, the computation should be done via <code>Array</code>s. If <code>A</code> was a <code>CuArray</code>, then it should be expected that the computation should be internally done using a <code>CuArray</code> (or appropriately error if not supported). For these reasons, constructing arrays via generic methods, like <code>similar(A)</code>, is preferred when writing <code>f</code> instead of using non-generic constructors like <code>Array(undef,size(A))</code> unless the function is documented as being non-generic.</p><h3 id="Trait-definition-and-adherence-to-generic-interface-is-preferred-when-possible"><a class="docs-heading-anchor" href="#Trait-definition-and-adherence-to-generic-interface-is-preferred-when-possible">Trait definition and adherence to generic interface is preferred when possible</a><a id="Trait-definition-and-adherence-to-generic-interface-is-preferred-when-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Trait-definition-and-adherence-to-generic-interface-is-preferred-when-possible" title="Permalink"></a></h3><p>Julia provides many different interfaces, for example:</p><ul><li><a href="https://docs.julialang.org/en/v1/manual/interfaces/#man-interface-iteration">Iteration</a></li><li><a href="https://docs.julialang.org/en/v1/manual/interfaces/#Indexing">Indexing</a></li><li><a href="https://docs.julialang.org/en/v1/manual/interfaces/#man-interfaces-broadcasting">Broadcast</a></li></ul><p>Those interfaces should be followed when possible. For example, when defining broadcast overloads, one should implement a <code>BroadcastStyle</code> as suggested by the documentation instead of simply attempting to bypass the broadcast system via <code>copyto!</code> overloads.</p><p>When interface functions are missing, these should be added to Base Julia or an interface package, like <a href="https://github.com/JuliaArrays/ArrayInterface.jl">ArrayInterface.jl</a>. Such traits should be declared and used when appropriate. For example, if a line of code requires mutation, the trait <code>ArrayInterface.ismutable(A)</code> should be checked before attempting to mutate, and informative error messages should be written to capture the immutable case (or, an alternative code that does not mutate should be given).</p><p>One example of this principle is demonstrated in the generation of Jacobian matrices. In many scientific applications, one may wish to generate a Jacobian cache from the user&#39;s input <code>u0</code>. A naive way to generate this Jacobian is <code>J = similar(u0,length(u0),length(u0))</code>. However, this will generate a Jacobian <code>J</code> such that <code>J isa Matrix</code>.</p><h3 id="Macros-should-be-limited-and-only-be-used-for-syntactic-sugar"><a class="docs-heading-anchor" href="#Macros-should-be-limited-and-only-be-used-for-syntactic-sugar">Macros should be limited and only be used for syntactic sugar</a><a id="Macros-should-be-limited-and-only-be-used-for-syntactic-sugar-1"></a><a class="docs-heading-anchor-permalink" href="#Macros-should-be-limited-and-only-be-used-for-syntactic-sugar" title="Permalink"></a></h3><p>Macros define new syntax, and for this reason, they tend to be less composable than other coding styles and require prior familiarity to be easily understood. One principle to keep in mind is, “can the person reading the code easily picture what code is being generated?”. For example, a user of Soss.jl may not know what code is being generated by:</p><pre><code class="language-julia hljs">@model (x, α) begin
+    σ ~ Exponential()
+    β ~ Normal()
+    y ~ For(x) do xj
+        Normal(α + β * xj, σ)
+    end
+    return y
+end</code></pre><p>and thus using such a macro as the interface is not preferred when possible. However, a macro like <a href="https://github.com/SciML/MuladdMacro.jl"><code>@muladd</code></a> is trivial to picture on a code (it recursively transforms <code>a*b + c</code> to <code>muladd(a,b,c)</code> for more <a href="https://en.wikipedia.org/wiki/Multiply%E2%80%93accumulate_operation">accuracy and efficiency</a>), so using such a macro, for example:</p><pre><code class="language-julia hljs">julia&gt; @macroexpand(@muladd k3 = f(t + c3 * dt, @. uprev + dt * (a031 * k1 + a032 * k2)))
+:(k3 = f((muladd)(c3, dt, t), (muladd).(dt, (muladd).(a032, k2, (*).(a031, k1)), uprev)))</code></pre><p>is recommended. Some macros in this category are:</p><ul><li><code>@inbounds</code></li><li><a href="https://github.com/SciML/MuladdMacro.jl"><code>@muladd</code></a></li><li><code>@view</code></li><li><a href="https://github.com/SciML/ModelingToolkit.jl"><code>@named</code></a></li><li><code>@.</code></li><li><a href="https://github.com/YingboMa/FastBroadcast.jl"><code>@..</code></a></li></ul><p>Some performance macros, like <code>@simd</code>, <code>@threads</code>, or <a href="https://github.com/JuliaSIMD/LoopVectorization.jl"><code>@turbo</code> from LoopVectorization.jl</a>, make an exception in that their generated code may be foreign to many users. However, they still are classified as appropriate uses as they are syntactic sugar since they do (or should) not change the behavior of the program in measurable ways other than performance.</p><h3 id="Errors-should-be-caught-as-high-as-possible,-and-error-messages-should-be-contextualized-for-newcomers"><a class="docs-heading-anchor" href="#Errors-should-be-caught-as-high-as-possible,-and-error-messages-should-be-contextualized-for-newcomers">Errors should be caught as high as possible, and error messages should be contextualized for newcomers</a><a id="Errors-should-be-caught-as-high-as-possible,-and-error-messages-should-be-contextualized-for-newcomers-1"></a><a class="docs-heading-anchor-permalink" href="#Errors-should-be-caught-as-high-as-possible,-and-error-messages-should-be-contextualized-for-newcomers" title="Permalink"></a></h3><p>Whenever possible, defensive programming should be used to check for potential errors before they are encountered deeper within a package. For example, if one knows that <code>f(u0,p)</code> will error unless <code>u0</code> is the size of <code>p</code>, this should be caught at the start of the function to throw a domain specific error, for example “parameters and initial condition should be the same size”.</p><p>This contextualization should result in error messages that use terminology related to the user facing API (vs. referencing internal implementation details). Ideally, such error messages should not only describe the issue in language that will be familiar to the user but also include suggestions, where possible, of how to correct the issue.</p><h3 id="Subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-Requires.jl"><a class="docs-heading-anchor" href="#Subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-Requires.jl">Subpackaging and interface packages is preferred over conditional modules via Requires.jl</a><a id="Subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-Requires.jl-1"></a><a class="docs-heading-anchor-permalink" href="#Subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-Requires.jl" title="Permalink"></a></h3><p>Requires.jl should be avoided at all costs. If an interface package exists, such as <a href="https://github.com/JuliaDiff/ChainRulesCore.jl">ChainRulesCore.jl</a> for defining automatic differentiation rules without requiring a dependency on the whole ChainRules.jl system, or <a href="https://github.com/JuliaPlots/RecipesBase.jl">RecipesBase.jl</a> which allows for defining Plots.jl plot recipes without a dependency on Plots.jl, a direct dependency on these interface packages is preferred.</p><p>Otherwise, instead of resorting to a conditional dependency using Requires.jl, it is preferred to create subpackages, i.e. smaller independent packages kept within the same Github repository with independent versioning and package management. An example of this is seen in <a href="https://github.com/SciML/Optimization.jl">Optimization.jl</a> which has subpackages like <a href="https://github.com/SciML/Optimization.jl/tree/master/lib/OptimizationBBO">OptimizationBBO.jl</a> for BlackBoxOptim.jl support.</p><p>Some important interface packages to know about are:</p><ul><li><a href="https://github.com/JuliaDiff/ChainRulesCore.jl">ChainRulesCore.jl</a></li><li><a href="https://github.com/JuliaPlots/RecipesBase.jl">RecipesBase.jl</a></li><li><a href="https://github.com/JuliaArrays/ArrayInterface.jl">ArrayInterface.jl</a></li><li><a href="https://github.com/SciML/CommonSolve.jl">CommonSolve.jl</a></li><li><a href="https://github.com/SciML/SciMLBase.jl">SciMLBase.jl</a></li></ul><h3 id="Functions-should-either-attempt-to-be-non-allocating-and-reuse-caches,-or-treat-inputs-as-immutable"><a class="docs-heading-anchor" href="#Functions-should-either-attempt-to-be-non-allocating-and-reuse-caches,-or-treat-inputs-as-immutable">Functions should either attempt to be non-allocating and reuse caches, or treat inputs as immutable</a><a id="Functions-should-either-attempt-to-be-non-allocating-and-reuse-caches,-or-treat-inputs-as-immutable-1"></a><a class="docs-heading-anchor-permalink" href="#Functions-should-either-attempt-to-be-non-allocating-and-reuse-caches,-or-treat-inputs-as-immutable" title="Permalink"></a></h3><p>Mutating codes and non-mutating codes fall into different worlds. When a code is fully immutable, the compiler can better reason about dependencies, optimize the code, and check for correctness. However, many times a code that makes the fullest use of mutation can outperform even what the best compilers of today can generate. That said, the worst of all worlds is when code mixes mutation with non-mutating code. Not only is this a mishmash of coding styles, but it also has the potential non-locality and compiler proof issues of mutating code while not fully benefiting from the mutation.</p><h3 id="Out-Of-Place-and-Immutability-is-preferred-when-sufficient-performant"><a class="docs-heading-anchor" href="#Out-Of-Place-and-Immutability-is-preferred-when-sufficient-performant">Out-Of-Place and Immutability is preferred when sufficient performant</a><a id="Out-Of-Place-and-Immutability-is-preferred-when-sufficient-performant-1"></a><a class="docs-heading-anchor-permalink" href="#Out-Of-Place-and-Immutability-is-preferred-when-sufficient-performant" title="Permalink"></a></h3><p>Mutation is used to get more performance by decreasing the number of heap allocations. However, if it&#39;s not helpful for heap allocations in a given spot, do not use mutation. Mutation is scary and should be avoided unless it gives an immediate benefit. For example, if matrices are sufficiently large, then <code>A*B</code> is as fast as <code>mul!(C,A,B)</code>, and thus writing <code>A*B</code> is preferred (unless the rest of the function is being careful about being fully non-allocating, in which case this should be <code>mul!</code> for consistency).</p><p>Similarly, when defining types, using <code>struct</code> is preferred to <code>mutable struct</code> unless mutating the struct is a common occurrence. Even if mutating the struct is a common occurrence, see whether using <a href="https://github.com/jw3126/Setfield.jl">Setfield.jl</a> is sufficient. The compiler will optimize the construction of immutable structs, and thus this can be more efficient if it&#39;s not too much of a code hassle.</p><h3 id="Tests-should-attempt-to-cover-a-wide-gamut-of-input-types"><a class="docs-heading-anchor" href="#Tests-should-attempt-to-cover-a-wide-gamut-of-input-types">Tests should attempt to cover a wide gamut of input types</a><a id="Tests-should-attempt-to-cover-a-wide-gamut-of-input-types-1"></a><a class="docs-heading-anchor-permalink" href="#Tests-should-attempt-to-cover-a-wide-gamut-of-input-types" title="Permalink"></a></h3><p>Code coverage numbers are meaningless if one does not consider the input types. For example, one can hit all the code with <code>Array</code>, but that does not test whether <code>CuArray</code> is compatible! Thus it&#39;s always good to think of coverage not in terms of lines of code but in terms of type coverage. A good list of number types to think about are:</p><ul><li><code>Float64</code></li><li><code>Float32</code></li><li><code>Complex</code></li><li><a href="https://github.com/JuliaDiff/ForwardDiff.jl"><code>Dual</code></a></li><li><code>BigFloat</code></li></ul><p>Array types to think about testing are:</p><ul><li><code>Array</code></li><li><a href="https://github.com/JuliaArrays/OffsetArrays.jl"><code>OffsetArray</code></a></li><li><a href="https://github.com/JuliaGPU/CUDA.jl"><code>CuArray</code></a></li></ul><h3 id="When-in-doubt,-a-submodule-should-become-a-subpackage-or-separate-package"><a class="docs-heading-anchor" href="#When-in-doubt,-a-submodule-should-become-a-subpackage-or-separate-package">When in doubt, a submodule should become a subpackage or separate package</a><a id="When-in-doubt,-a-submodule-should-become-a-subpackage-or-separate-package-1"></a><a class="docs-heading-anchor-permalink" href="#When-in-doubt,-a-submodule-should-become-a-subpackage-or-separate-package" title="Permalink"></a></h3><p>Keep packages focused on one core idea. If there&#39;s something separate enough to be a submodule, could it instead be a separate, well-tested and documented package to be used by other packages? Most likely yes.</p><h3 id="Globals-should-be-avoided-whenever-possible"><a class="docs-heading-anchor" href="#Globals-should-be-avoided-whenever-possible">Globals should be avoided whenever possible</a><a id="Globals-should-be-avoided-whenever-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Globals-should-be-avoided-whenever-possible" title="Permalink"></a></h3><p>Global variables should be avoided whenever possible. When required, global variables should be constants and have an all uppercase name separated with underscores (e.g. <code>MY_CONSTANT</code>). They should be defined at the top of the file, immediately after imports and exports but before an <code>__init__</code> function. If you truly want mutable global style behavior you may want to look into mutable containers.</p><h3 id="Type-stable-and-Type-grounded-code-is-preferred-wherever-possible"><a class="docs-heading-anchor" href="#Type-stable-and-Type-grounded-code-is-preferred-wherever-possible">Type-stable and Type-grounded code is preferred wherever possible</a><a id="Type-stable-and-Type-grounded-code-is-preferred-wherever-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Type-stable-and-Type-grounded-code-is-preferred-wherever-possible" title="Permalink"></a></h3><p>Type-stable and type-grounded code helps the compiler create not only more optimized code, but also faster to compile code. Always keep containers well-typed, functions specializing on the appropriate arguments, and types concrete.</p><h3 id="Closures-should-be-avoided-whenever-possible"><a class="docs-heading-anchor" href="#Closures-should-be-avoided-whenever-possible">Closures should be avoided whenever possible</a><a id="Closures-should-be-avoided-whenever-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Closures-should-be-avoided-whenever-possible" title="Permalink"></a></h3><p>Closures can cause accidental type instabilities that are difficult to track down and debug; in the long run, it saves time to always program defensively and avoid writing closures in the first place, even when a particular closure would not have been problematic. A similar argument applies to reading code with closures; if someone is looking for type instabilities, this is faster to do when code does not contain closures. Furthermore, if you want to update variables in an outer scope, do so explicitly with <code>Ref</code>s or self defined structs. For example,</p><pre><code class="language-julia hljs">map(Base.Fix2(getindex, i), vector_of_vectors)</code></pre><p>is preferred over</p><pre><code class="language-julia hljs">map(v -&gt; v[i], vector_of_vectors)</code></pre><p>or</p><pre><code class="language-julia hljs">[v[i] for v in vector_of_vectors]</code></pre><h3 id="Numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces"><a class="docs-heading-anchor" href="#Numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces">Numerical functionality should use the appropriate generic numerical interfaces</a><a id="Numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces-1"></a><a class="docs-heading-anchor-permalink" href="#Numerical-functionality-should-use-the-appropriate-generic-numerical-interfaces" title="Permalink"></a></h3><p>While you can use <code>A\b</code> to do a linear solve inside a package, that does not mean that you should. This interface is only sufficient for performing factorizations, and so that limits the scaling choices, the types of <code>A</code> that can be supported, etc. Instead, linear solves within packages should use LinearSolve.jl. Similarly, nonlinear solves should use NonlinearSolve.jl. Optimization should use Optimization.jl. Etc. This allows the full generic choice to be given to the user without depending on every solver package (effectively recreating the generic interfaces within each package).</p><h3 id="Functions-should-capture-one-underlying-principle"><a class="docs-heading-anchor" href="#Functions-should-capture-one-underlying-principle">Functions should capture one underlying principle</a><a id="Functions-should-capture-one-underlying-principle-1"></a><a class="docs-heading-anchor-permalink" href="#Functions-should-capture-one-underlying-principle" title="Permalink"></a></h3><p>Functions mean one thing. Every dispatch of <code>+</code> should be “the meaning of addition on these types”. While in theory you could add dispatches to <code>+</code> that mean something different, that will fail in generic code for which <code>+</code> means addition. Thus, for generic code to work, code needs to adhere to one meaning for each function. Every dispatch should be an instantiation of that meaning.</p><h3 id="Internal-choices-should-be-exposed-as-options-whenever-possible"><a class="docs-heading-anchor" href="#Internal-choices-should-be-exposed-as-options-whenever-possible">Internal choices should be exposed as options whenever possible</a><a id="Internal-choices-should-be-exposed-as-options-whenever-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Internal-choices-should-be-exposed-as-options-whenever-possible" title="Permalink"></a></h3><p>Whenever possible, numerical values and choices within scripts should be exposed as options to the user. This promotes code reusability beyond the few cases the author may have expected.</p><h3 id="Prefer-code-reuse-over-rewrites-whenever-possible"><a class="docs-heading-anchor" href="#Prefer-code-reuse-over-rewrites-whenever-possible">Prefer code reuse over rewrites whenever possible</a><a id="Prefer-code-reuse-over-rewrites-whenever-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Prefer-code-reuse-over-rewrites-whenever-possible" title="Permalink"></a></h3><p>If a package has a function you need, use the package. Add a dependency if you need to. If the function is missing a feature, prefer to add that feature to said package and then add it as a dependency. If the dependency is potentially troublesome, for example because it has a high load time, prefer to spend time helping said package fix these issues and add the dependency. Only when it does not seem possible to make the package “good enough” should using the package be abandoned. If it is abandoned, consider building a new package for this functionality as you need it, and then make it a dependency.</p><h3 id="Prefer-to-not-shadow-functions"><a class="docs-heading-anchor" href="#Prefer-to-not-shadow-functions">Prefer to not shadow functions</a><a id="Prefer-to-not-shadow-functions-1"></a><a class="docs-heading-anchor-permalink" href="#Prefer-to-not-shadow-functions" title="Permalink"></a></h3><p>Two functions can have the same name in Julia by having different namespaces. For example, <code>X.f</code> and <code>Y.f</code> can be two different functions, with different dispatches, but the same name. This should be avoided whenever possible. Instead of creating <code>MyPackage.sort</code>, consider adding dispatches to <code>Base.sort</code> for your types if these new dispatches match the underlying principle of the function. If it doesn&#39;t, prefer to use a different name. While using <code>MyPackage.sort</code> is not conflicting, it is going to be confusing for most people unfamiliar with your code, so <code>MyPackage.special_sort</code> would be more helpful to newcomers reading the code.</p><h3 id="Avoid-unmaintained-dependencies"><a class="docs-heading-anchor" href="#Avoid-unmaintained-dependencies">Avoid unmaintained dependencies</a><a id="Avoid-unmaintained-dependencies-1"></a><a class="docs-heading-anchor-permalink" href="#Avoid-unmaintained-dependencies" title="Permalink"></a></h3><p>Packages should only be depended on if they have maintainers who are responsive. Good code requires good communities. If maintainers do not respond to breakage within 2 weeks with multiple notices, then all dependencies from that organization should be considered for removal. Note that some issues may take a long time to fix, so it may take more time than 2 weeks to fix, it&#39;s simply that the communication should be open, consistent, and timely.</p><h3 id="Avoid-unsafe-operations"><a class="docs-heading-anchor" href="#Avoid-unsafe-operations">Avoid unsafe operations</a><a id="Avoid-unsafe-operations-1"></a><a class="docs-heading-anchor-permalink" href="#Avoid-unsafe-operations" title="Permalink"></a></h3><p>Like other high-level languages that provide strong safety guarantees by default, Julia nevertheless has a small set of operations that bypass normal checks. These operations are clearly marked with the prefix <code>unsafe_</code>. By using an “unsafe” operation, the programmer asserts that they know the operation is valid even though the language cannot automatically ensure it. For high reliability these constructs should be avoided or carefully inspected during code review. They are:</p><ul><li><code>unsafe_load</code></li><li><code>unsafe_store!</code></li><li><code>unsafe_read</code></li><li><code>unsafe_write</code></li><li><code>unsafe_string</code></li><li><code>unsafe_wrap</code></li><li><code>unsafe_convert</code></li><li><code>unsafe_copyto!</code></li><li><code>unsafe_pointer_to_objref</code></li><li><code>ccall</code></li><li><code>@ccall</code></li><li><code>@inbounds</code></li></ul><h3 id="Avoid-non-public-operations-in-Julia-Base-and-packages"><a class="docs-heading-anchor" href="#Avoid-non-public-operations-in-Julia-Base-and-packages">Avoid non public operations in Julia Base and packages</a><a id="Avoid-non-public-operations-in-Julia-Base-and-packages-1"></a><a class="docs-heading-anchor-permalink" href="#Avoid-non-public-operations-in-Julia-Base-and-packages" title="Permalink"></a></h3><p>The Julia standard library and packages developed in the Julia programming language have an intended public API indicated by marking symbols with the export keyword or <a href="https://github.com/JuliaLang/julia/pull/50105">in v1.11+ with the new <code>public</code> keyword</a>. However, it is possible to use non public names via explicit qualification, e.g. Base.foobar. This practice is not necessarily unsafe, but should be avoided since non public operations may have unexpected invariants and behaviors, and are subject to changes in future releases of the language.</p><p>Note that qualified names are commonly used in method definitions to clarify that a function is being extended, e.g. function <code>Base.getindex(...) … end</code>. Such uses do not fall under this concern.</p><h3 id="Always-default-to-constructs-which-initialize-data"><a class="docs-heading-anchor" href="#Always-default-to-constructs-which-initialize-data">Always default to constructs which initialize data</a><a id="Always-default-to-constructs-which-initialize-data-1"></a><a class="docs-heading-anchor-permalink" href="#Always-default-to-constructs-which-initialize-data" title="Permalink"></a></h3><p>For certain newly-allocated data structures, such as numeric arrays, the Julia compiler and runtime do not check whether data is accessed before it has been initialized. Therefore such data structures can “leak” information from one part of a program to another. Uninitialized structures should be avoided in favor of functions like <code>zeros</code> and <code>fill</code> that create data with well-defined contents. If code does allocate uninitialized memory, it should ensure that this memory is fully initialized before being returned from the function in which it is allocated.</p><p>Constructs which create uninitialized memory should only be used if there is a demonstrated performance impact and it should ensure that all memory is initialized in the same function in which the array is intended to be used.</p><p>Example:</p><pre><code class="language-julia hljs">function make_array(n::Int)
+    A = Vector{Int}(undef, n)
+    # function body
+    return A
+end</code></pre><p>This function allocates an integer array with undefined initial contents (note the language forces you to request this explicitly). A code reviewer should ensure that the function body assigns every element of the array. One can similarly create structs with undefined fields, and if used this way, one should ensure all fields are initialized:</p><pre><code class="language-julia hljs">struct Foo
+  x::Int
+  Foo() = new()
+end
+
+julia&gt; Foo().x
+139736495677280</code></pre><h3 id="Use-extra-precaution-when-running-external-processes"><a class="docs-heading-anchor" href="#Use-extra-precaution-when-running-external-processes">Use extra precaution when running external processes</a><a id="Use-extra-precaution-when-running-external-processes-1"></a><a class="docs-heading-anchor-permalink" href="#Use-extra-precaution-when-running-external-processes" title="Permalink"></a></h3><p>The Julia standard library contains a <code>run</code> function and other facilities for running external processes. Any program that does this is only as safe as the external process it runs. If this cannot be avoided, then best practices for using these features are:</p><ol><li>Only run fixed, known executables, and do not derive the path of the executable to run from user input or other outside sources.</li><li>Make sure the executables used have also passed required audit procedures.</li><li>Make sure to handle process failure (non-zero exit code).</li><li>If possible, run external processes in a sandbox or “jail” environment with access only to what they need in terms of files, file handles and ports.</li></ol><p>When run in a sandbox or jail, external processes can actually improve security since the subprocess is isolated from the rest of the system by the kernel.</p><h3 id="Avoid-eval-whenever-possible"><a class="docs-heading-anchor" href="#Avoid-eval-whenever-possible">Avoid eval whenever possible</a><a id="Avoid-eval-whenever-possible-1"></a><a class="docs-heading-anchor-permalink" href="#Avoid-eval-whenever-possible" title="Permalink"></a></h3><p>Julia contains an <code>eval</code> function that executes program expressions constructed at run time. This is not in itself unsafe, but because the code it will run is not textually evident in the surrounding program, it can be difficult to determine what it will do. For example, a Julia program could construct and eval an expression that performs an unsafe operation without the operation being clearly evident to a code reviewer or analysis tool.</p><p>In general, programs should try to avoid using eval in ways that are influenced by user input because there are many subtle ways this can lead to arbitrary code execution. If user input must influence eval, the input should only be used to select from a known list of possible behaviors. Approaches using pattern matching to try to validate expressions should be viewed with extreme suspicion because they tend to be brittle and/or exploitable.</p><p>Note: it is common for Julia programs to invoke <code>eval</code> or <code>@eval</code> at the top level, in order to generate global definitions programmatically. Such uses are generally safe.</p><h3 id="Avoid-bounds-check-removal,-and-if-done,-add-appropriate-manual-checks"><a class="docs-heading-anchor" href="#Avoid-bounds-check-removal,-and-if-done,-add-appropriate-manual-checks">Avoid bounds check removal, and if done, add appropriate manual checks</a><a id="Avoid-bounds-check-removal,-and-if-done,-add-appropriate-manual-checks-1"></a><a class="docs-heading-anchor-permalink" href="#Avoid-bounds-check-removal,-and-if-done,-add-appropriate-manual-checks" title="Permalink"></a></h3><p>While Julia checks the bounds of all array operations by default, it is possible to manually disable bounds checks in a program using <code>@inbounds</code>. Note that in early versions of Julia (pre v1.9) this could be used as a performance optimization, but in later versions it can demonstrably reduce performance and thus one should never immediately default to bounds check removal as a performance habit.</p><p>Uses of this construct should be carefully audited during code review. For maximum safety, it should be avoided or programs should be run with the command line option <code>--check-bounds=yes</code> to enable all checks regardless of manual annotations.</p><p>To check a use of @inbounds for correctness, it suffices to examine all array indexing expressions (e.g. <code>a[i]</code>) within the expression it applies to, and ensure that each index will always be within the bounds of the indexed array. For example the following common use pattern is valid:</p><pre><code class="language-julia hljs">@inbounds for i in eachindex(A)
+    A[i] = i
+end</code></pre><p>By inspection, the variable <code>i</code> will always be a valid index for <code>A</code>.</p><p>For contrast, the following use is invalid unless <code>A</code> is known to be a specific type (e.g.: <code>Vector</code>)</p><pre><code class="language-julia hljs">@inbounds for i in 1:length(A)
+    A[i] = i
+end</code></pre><p><code>@inbounds</code> should be applied to as narrow a region of code as possible. When applied to a large block of code, it can be difficult to identify and verify all indexing expressions.</p><h3 id="Avoid-ccall-unless-necessary,-and-use-safe-ccall-practices-when-required"><a class="docs-heading-anchor" href="#Avoid-ccall-unless-necessary,-and-use-safe-ccall-practices-when-required">Avoid ccall unless necessary, and use safe ccall practices when required</a><a id="Avoid-ccall-unless-necessary,-and-use-safe-ccall-practices-when-required-1"></a><a class="docs-heading-anchor-permalink" href="#Avoid-ccall-unless-necessary,-and-use-safe-ccall-practices-when-required" title="Permalink"></a></h3><p>Calling C (and Fortran) libraries from Julia is very easy: the ccall syntax (and the more convenient <code>@ccall</code> macro) allow calling C libraries without any need for glue files or boilerplate. They do require caution, however: the programmer tells Julia what the signature of each library function is and if this is not done correctly, it can be the cause of crashes and thus security vulnerabilities. An exploit is just a crash that an attacker has arranged to fail in a worse way than it would have randomly.</p><p>Safe use of ccall depends on both automated and manual measures.</p><p>What Julia does (automated):</p><ul><li>Julia provides aliases for C types like Cint, Clong, Cchar, Csize_t, etc. It makes sure that these match what the C ABI on the machine that code is running on expects them to be.</li><li>The Clang.jl package automates the process of turning C header files into valid ccall invocations.</li><li>Pkg+BinaryBuilder.jl allows precise versioning of binary dependencies.</li><li>Julia objects passed directly to ccall are protected from garbage collection (GC) for the duration of the call.</li></ul><p>What you must do (manual):</p><ul><li>When writing ccall signatures, programmers should always look at the signature in the C header file and make sure the signature used in Julia matches exactly.</li><li>Use Julia’s C type aliases. For example, if an argument in C is of type int then the corresponding type in Julia is Cint, not Int — on most platforms Int will be the same size as Clong rather than Cint.</li><li>If a raw pointer to memory managed by Julia’s GC is passed to C via ccall, the owning object must be preserved using <code>GC.@preserve</code> around the use of ccall. See the documentation of this macro for more information and examples of proper usage.</li></ul><h3 id="Validate-all-user-inputs-to-avoid-code-injection"><a class="docs-heading-anchor" href="#Validate-all-user-inputs-to-avoid-code-injection">Validate all user inputs to avoid code injection</a><a id="Validate-all-user-inputs-to-avoid-code-injection-1"></a><a class="docs-heading-anchor-permalink" href="#Validate-all-user-inputs-to-avoid-code-injection" title="Permalink"></a></h3><p>When writing programs that construct any kind of code based on user input, extra caution is required and the user input must be validated or escaped. For example, a common type of attack in web applications written in all programming languages is SQL injection: a user input is spliced into an SQL query to construct a customized query based on the user’s input. If raw user input is spliced into an SQL query as a string, it is easy to craft inputs that will execute arbitrary SQL commands, including destructive ones or ones that will reveal private data to an attacker. To prevent this, the user input should be passed as parameters to SQL prepared statements; a package such as SqlStrings.jl can be used to do this without a syntax burden. This protects against malicious input, but also encourages systematic marshaling of Julia types into SQL types. If string interpolation must be used, all user input should be either validated to match a strict, safe pattern (e.g. only consists of decimal digits or ASCII letters), or it should be escaped to ensure that SQL treats it only as data, not as code (e.g. turn a user input into an escaped string literal).</p><p>While we have talked specifically about SQL here, this issue is not limited to SQL. The same concern occurs when executing programs via shells, for example. Julia is more secure than most programming languages in this respect because the default mechanism for running external code (see Cmd objects in the Julia manual) is carefully designed to not be susceptible to this kind of injection, but programmers may be tempted to use a shell to call external code for convenience sake. The fact that a shell must be explicitly invoked in Julia helps catch these kinds of circumstances. Using a shell like this is usually a bad idea and can typically be avoided. If an external shell must be used, be certain that any user data used to construct the shell command is carefully validated or escaped to avoid shell injection attacks.</p><h3 id="Ensure-secure-random-number-generators-are-used-when-required"><a class="docs-heading-anchor" href="#Ensure-secure-random-number-generators-are-used-when-required">Ensure secure random number generators are used when required</a><a id="Ensure-secure-random-number-generators-are-used-when-required-1"></a><a class="docs-heading-anchor-permalink" href="#Ensure-secure-random-number-generators-are-used-when-required" title="Permalink"></a></h3><p>The default pseudo-random number generator in Julia, which can be accessed by calling <code>rand()</code> and <code>randn()</code>, for example, is intended for simulation purposes and not for applications requiring cryptographic security. An attacker can, by observing a series of random values, construct its internal state and predict future pseudo-random values. For security-sensitive applications like generating secret values used for authentication, the <code>RandomDevice()</code> random-number generator should be used. This produces genuinely random numbers which cannot be predicted.</p><h3 id="Be-aware-of-distributed-computing-encryption-principles"><a class="docs-heading-anchor" href="#Be-aware-of-distributed-computing-encryption-principles">Be aware of distributed computing encryption principles</a><a id="Be-aware-of-distributed-computing-encryption-principles-1"></a><a class="docs-heading-anchor-permalink" href="#Be-aware-of-distributed-computing-encryption-principles" title="Permalink"></a></h3><p>Julia’s distributed computing uses unencrypted TCP/IP sockets for communication by default and expects to be running on a fully trusted cluster. If <code>using Distributed</code> in your code through <code>@distributed</code>, <code>pmap</code>, etc., be aware that the communication channels are not encrypted. Julia opens ports for communication between processes in a distributed cluster. A pre-generated random cookie is necessary to successfully connect (Julia v0.5 onwards), which defeats arbitrary external connections. This mechanism is described in detail in <a href="https://github.com/JuliaLang/julia/pull/16292">https://github.com/JuliaLang/julia/pull/16292</a>.</p><p>For additional security, these communication channels can be encrypted through the use of a custom ClusterManager which enables SSH port forwarding, or uses some other mechanism to encrypt the communication channel.</p><h3 id="Always-immediately-flush-secret-data-after-handling"><a class="docs-heading-anchor" href="#Always-immediately-flush-secret-data-after-handling">Always immediately flush secret data after handling</a><a id="Always-immediately-flush-secret-data-after-handling-1"></a><a class="docs-heading-anchor-permalink" href="#Always-immediately-flush-secret-data-after-handling" title="Permalink"></a></h3><p>When it’s necessary to manage secret data (for example, a user’s password) it’s desirable to have this erased from memory immediately after finishing with the data. However, when a normal <code>String</code> or <code>Array</code> is used as a container for such data, the underlying bytes persist after the container is deallocated and in principle could be recovered by an attacker at a later time. There are also situations where a string or array may be implicitly copied, for example, if it is assigned to a location with a compatible but different type, it will be converted, thus creating a copy of the original data. Normally this is harmless and convenient, but making copies of secrets is obviously bad for security. To prevent this, Julia provides the type <code>Base.SecretBuffer</code> and a <code>shred!</code> function which should be called immediately after the data is finished with. The contents of a <code>SecretBuffer</code> must be explicitly extracted — it is never implicitly copied — and its contents will be automatically shredded upon garbage collection of the <code>SecretBuffer</code> object if the <code>shred!</code> function was never called on it, with a warning indicating that the buffer should have been explicitly shredded by the programmer.</p><h2 id="Specific-Rules"><a class="docs-heading-anchor" href="#Specific-Rules">Specific Rules</a><a id="Specific-Rules-1"></a><a class="docs-heading-anchor-permalink" href="#Specific-Rules" title="Permalink"></a></h2><h3 id="High-Level-Rules"><a class="docs-heading-anchor" href="#High-Level-Rules">High Level Rules</a><a id="High-Level-Rules-1"></a><a class="docs-heading-anchor-permalink" href="#High-Level-Rules" title="Permalink"></a></h3><ul><li>Use 4 spaces per indentation level, no tabs.</li><li>Try to adhere to a 92 character line length limit.</li></ul><h3 id="General-Naming-Principles"><a class="docs-heading-anchor" href="#General-Naming-Principles">General Naming Principles</a><a id="General-Naming-Principles-1"></a><a class="docs-heading-anchor-permalink" href="#General-Naming-Principles" title="Permalink"></a></h3><ul><li>All type names should be <code>CamelCase</code>.</li><li>All struct names should be <code>CamelCase</code>.</li><li>All module names should be <code>CamelCase</code>.</li><li>All function names should be <code>snake_case</code> (all lowercase).</li><li>All variable names should be <code>snake_case</code> (all lowercase).</li><li>All constant names should be <code>SNAKE_CASE</code> (all uppercase).</li><li>All abstract type names should begin with <code>Abstract</code>.</li><li>All type variable names should be a single capital letter, preferably related to the value being typed.</li><li>Whole words are usually better than abbreviations or single letters.</li><li>Variables meant to be internal or private to a package should be denoted by prepending two underscores, i.e. <code>__</code>.</li><li>Single letters can be okay when naming a mathematical entity, i.e. an entity whose purpose or non-mathematical “meaning” is likely only known by downstream callers. For example, <code>a</code> and <code>b</code> would be appropriate names when implementing <code>*(a::AbstractMatrix, b::AbstractMatrix)</code>, since the “meaning” of those arguments (beyond their mathematical meaning as matrices, which is already described by the type) is only known by the caller.</li><li>Unicode is fine within code where it increases legibility, but in no case should Unicode be used in public APIs. This is to allow support for terminals that cannot use Unicode: if a keyword argument must be η, then it can be exclusionary to uses on clusters which do not support Unicode inputs.</li></ul><h3 id="Comments"><a class="docs-heading-anchor" href="#Comments">Comments</a><a id="Comments-1"></a><a class="docs-heading-anchor-permalink" href="#Comments" title="Permalink"></a></h3><ul><li><p><code>TODO</code> to mark todo comments and <code>XXX</code> to mark comments about currently broken code</p></li><li><p>Quote code in comments using backticks (e.g. <code>`variable_name`</code>).</p></li><li><p>When possible, code should be changed to incorporate information that would have been in a comment. For example, instead of commenting <code># fx applies the effects to a tree</code>, simply change the function and variable names <code>apply_effects(tree)</code>.</p></li><li><p>Comments referring to Github issues and PRs should add the URL in the comments. Only use inline comments if they fit within the line length limit. If your comment cannot be fitted inline, then place the comment above the content to which it refers:</p><pre><code class="language-julia hljs"># Yes:
+
+# Number of nodes to predict. Again, an issue with the workflow order. Should be updated
+# after data is fetched.
+p = 1
+
+# No:
+
+p = 1  # Number of nodes to predict. Again, an issue with the workflow order. Should be
+# updated after data is fetched.</code></pre></li><li><p>In general, comments above a line of code or function are preferred to inline comments.</p></li></ul><h3 id="Modules"><a class="docs-heading-anchor" href="#Modules">Modules</a><a id="Modules-1"></a><a class="docs-heading-anchor-permalink" href="#Modules" title="Permalink"></a></h3><ul><li><p>Module imports should occur at the top of a file or right after a <code>module</code> declaration.</p></li><li><p>Module imports in packages should either use <code>import</code> or explicitly declare the imported functionality, for example <code>using Dates: Year, Month, Week, Day, Hour, Minute, Second, Millisecond</code>.</p></li><li><p>Import and using statements should be separated, and should be divided by a blank line.</p><pre><code class="language-julia hljs"># Yes:
+import A: a
+import C
+
+using B
+using D: d
+
+# No:
+import A: a
+using B
+import C
+using D: d</code></pre><ul><li>Large sets of imports are preferred to be written in space filling lines separated by commas.</li></ul><pre><code class="language-julia hljs"># Yes:
+using A, B, C, D
+
+# No:
+using A
+using B
+using C
+using D
+
+# No:
+using A,
+      B,
+      C,
+      D</code></pre></li><li><p>Exported variables should be considered part of the public API, and changing their interface constitutes a breaking change.</p></li><li><p>Any exported variables should be sufficiently unique. I.e., do not export <code>f</code> as that is very likely to clash with something else.</p></li><li><p>A file that includes the definition of a module, should not include any other code that runs outside that module. i.e. the module should be declared at the top of the file with the <code>module</code> keyword and <code>end</code> at the bottom of the file. No other code before, or after (except for module docstring before). In this case, the code within the module block should <strong>not</strong> be indented.</p></li><li><p>Sometimes, e.g. for tests, or for namespacing an enumeration, it <em>is</em> desirable to declare a submodule midway through a file. In this case, the code within the submodule <strong>should</strong> be indented.</p></li></ul><h3 id="Functions"><a class="docs-heading-anchor" href="#Functions">Functions</a><a id="Functions-1"></a><a class="docs-heading-anchor-permalink" href="#Functions" title="Permalink"></a></h3><ul><li><p>Only use short-form function definitions when they fit on a single line:</p><pre><code class="language-julia hljs"># Yes:
+foo(x::Int64) = abs(x) + 3
+
+# No:
+foobar(array_data::AbstractArray{T}, item::T) where {T &lt;: Int64} = T[
+    abs(x) * abs(item) + 3 for x in array_data
+]</code></pre></li><li><p>Inputs should be required unless a default is historically expected or likely to be applicable to &gt;95% of use cases. For example, the tolerance of a differential equation solver was set to a default of <code>abstol=1e-6,reltol=1e-3</code> as a generally correct plot in most cases, and is an expectation from back in the 90&#39;s. In that case, using the historically expected and most often useful default tolerances is justified. However, if one implements <code>GradientDescent</code>, the learning rate needs to be adjusted for each application (based on the size of the gradient), and thus a default of <code>GradientDescent(learning_rate = 1)</code> is not recommended.</p></li><li><p>Arguments that do not have defaults should preferably be made into positional arguments. The newer syntax of required keyword arguments can be useful, but should not be abused. Notable exceptions are cases where “either or” arguments are accepted, for example, if defining <code>g</code> or <code>dgdu</code> is sufficient, then making them both keyword arguments with <code>= nothing</code> and checking that either is not <code>nothing</code> (and throwing an appropriate error) is recommended if distinct dispatches with different types is not possible.</p></li><li><p>When calling a function, always separate your keyword arguments from your positional arguments with a semicolon. This avoids mistakes in ambiguous cases (such as splatting a Dict).</p></li><li><p>When writing a function that sends a lot of keyword arguments to another function, say sending keyword arguments to a differential equation solver, use a named tuple keyword argument instead of splatting the keyword arguments. For example, use <code>diffeq_solver_kwargs = (; abstol=1e-6, reltol=1e-6,)</code> as the API and use <code>solve(prob, alg; diffeq_solver_kwargs...)</code> instead of splatting all keyword arguments.</p></li><li><p>Functions that mutate arguments should be appended with <code>!</code>.</p></li><li><p><a href="https://docs.julialang.org/en/v1/manual/style-guide/#Avoid-type-piracy">Avoid type piracy</a>. I.e., do not add methods to functions you don&#39;t own on types you don&#39;t own. Either own the types or the function.</p></li><li><p>Functions should prefer instances instead of types for arguments. For example, for a solver type <code>Tsit5</code>, the interface should use <code>solve(prob,Tsit5())</code>, not <code>solve(prob,Tsit5)</code>. The reason for this is multifold. For one, passing a type has different specialization rules, so functionality can be slower unless <code>::Type{Tsit5}</code> is written in the dispatches that use it. Secondly, this allows for default and keyword arguments to extend the choices, which may become useful for some types down the line. Using this form allows for adding more options in a non-breaking manner.</p></li><li><p>If the number of arguments is too large to fit into a 92 character line, then use as many arguments as possible within a line and start each new row with the same indentation, preferably at the same column as the <code>(</code> but this can be moved left if the function name is very long. For example:</p><pre><code class="language-julia hljs"># Yes
+function my_large_function(argument1, argument2,
+                          argument3, argument4,
+                          argument5, x, y, z)
+
+# No
+function my_large_function(argument1,
+                          argument2,
+                          argument3,
+                          argument4,
+                          argument5,
+                          x,
+                          y,
+                          z)</code></pre></li></ul><h3 id="Function-Argument-Precedence"><a class="docs-heading-anchor" href="#Function-Argument-Precedence">Function Argument Precedence</a><a id="Function-Argument-Precedence-1"></a><a class="docs-heading-anchor-permalink" href="#Function-Argument-Precedence" title="Permalink"></a></h3><ol><li><p><strong>Function argument</strong>. Putting a function argument first permits the use of <a href="https://docs.julialang.org/en/v1/base/base/#do"><code>do</code></a> blocks for passing multiline anonymous functions.</p></li><li><p><strong>I/O stream</strong>. Specifying the <code>IO</code> object first permits passing the function to functions such as <a href="https://docs.julialang.org/en/v1/base/io-network/#Base.sprint"><code>sprint</code></a>, e.g. <code>sprint(show, x)</code>.</p></li><li><p><strong>Input being mutated</strong>. For example, in <a href="https://docs.julialang.org/en/v1/base/arrays/#Base.fill!"><code>fill!(x, v)</code></a>, <code>x</code> is the object being mutated and it appears before the value to be inserted into <code>x</code>.</p></li><li><p><strong>Type</strong>. Passing a type typically means that the output will have the given type. In <a href="https://docs.julialang.org/en/v1/base/numbers/#Base.parse"><code>parse(Int, &quot;1&quot;)</code></a>, the type comes before the string to parse. There are many such examples where the type appears first, but it&#39;s useful to note that in <a href="https://docs.julialang.org/en/v1/base/io-network/#Base.read"><code>read(io, String)</code></a>, the <code>IO</code> argument appears before the type, which is in keeping with the order outlined here.</p></li><li><p><strong>Input not being mutated</strong>. In <code>fill!(x, v)</code>, <code>v</code> is <em>not</em> being mutated and it comes after <code>x</code>.</p></li><li><p><strong>Key</strong>. For associative collections, this is the key of the key-value pair(s). For other indexed collections, this is the index.</p></li><li><p><strong>Value</strong>. For associative collections, this is the value of the key-value pair(s). In cases like <a href="https://docs.julialang.org/en/v1/base/arrays/#Base.fill!"><code>fill!(x, v)</code></a>, this is <code>v</code>.</p></li><li><p><strong>Everything else</strong>. Any other arguments.</p></li><li><p><strong>Varargs</strong>. This refers to arguments that can be listed indefinitely at the end of a function call. For example, in <code>Matrix{T}(undef, dims)</code>, the dimensions can be given as a <a href="https://docs.julialang.org/en/v1/base/base/#Core.Tuple"><code>Tuple</code></a>, e.g. <code>Matrix{T}(undef, (1,2))</code>, or as <a href="https://docs.julialang.org/en/v1/base/base/#Core.Vararg"><code>Vararg</code></a>s, e.g. <code>Matrix{T}(undef, 1, 2)</code>.</p></li><li><p><strong>Keyword arguments</strong>. In Julia keyword arguments have to come last anyway in function definitions; they&#39;re listed here for the sake of completeness.</p></li></ol><p>The vast majority of functions will not take every kind of argument listed above; the numbers merely denote the precedence that should be used for any applicable arguments to a function.</p><h3 id="Tests-and-Continuous-Integration"><a class="docs-heading-anchor" href="#Tests-and-Continuous-Integration">Tests and Continuous Integration</a><a id="Tests-and-Continuous-Integration-1"></a><a class="docs-heading-anchor-permalink" href="#Tests-and-Continuous-Integration" title="Permalink"></a></h3><ul><li><p>The high level <code>runtests.jl</code> file should only be used to shuttle to other test files.</p></li><li><p>Every set of tests should be included into a <a href="https://github.com/YingboMa/SafeTestsets.jl"><code>@safetestset</code></a>. A standard <code>@testset</code> does not fully enclose all defined values, such as functions defined in a <code>@testset</code>, and thus can “leak”.</p></li><li><p>Test includes should be written in one line, for example:</p><pre><code class="language-julia hljs">@time @safetestset &quot;Jacobian Tests&quot; include(&quot;interface/jacobian_tests.jl&quot;)</code></pre></li><li><p>Every test script should be fully reproducible in isolation. I.e., one should be able to copy paste that script and receive the results.</p></li><li><p>Test scripts should be grouped based on categories, for example tests of the interface vs tests for numerical convergence. Grouped tests should be kept in the same folder.</p></li><li><p>A <code>GROUP</code> environment variable should be used to specify test groups for parallel testing in continuous integration. A fallback group <code>All</code> should be used to specify all the tests that should be run when a developer runs <code>]test Package</code> locally. As an example, see the <a href="https://github.com/SciML/OrdinaryDiffEq.jl/blob/v6.10.0/test/runtests.jl">OrdinaryDiffEq.jl test structure</a></p></li><li><p>Tests should include downstream tests to major packages which use the functionality, to ensure continued support. Any update that breaks the downstream tests should follow with a notification to the downstream package of why the support was broken (preferably in the form of a PR that fixes support), and the package should be given a major version bump in the next release if the changed functionality was part of the public API.</p></li><li><p>CI scripts should use the default settings unless required.</p></li><li><p>CI scripts should test the Long-Term Support (LTS) release and the current stable release. Nightly tests are only necessary for packages with a heavy reliance on specific compiler details.</p></li><li><p>Any package supporting GPUs should include continuous integration for GPUs.</p></li><li><p><a href="https://documenter.juliadocs.org/stable/man/doctests/">Doctests</a> should be enabled except for the examples that are computationally-prohibitive to have as part of continuous integration.</p></li></ul><h3 id="Whitespace"><a class="docs-heading-anchor" href="#Whitespace">Whitespace</a><a id="Whitespace-1"></a><a class="docs-heading-anchor-permalink" href="#Whitespace" title="Permalink"></a></h3><ul><li><p>Avoid extraneous whitespace immediately inside parentheses, square brackets or braces.</p><pre><code class="language-julia hljs"># Yes:
+spam(ham[1], [eggs])
+
+# No:
+spam( ham[ 1 ], [ eggs ] )</code></pre></li><li><p>Avoid extraneous whitespace immediately before a comma or semicolon:</p><pre><code class="language-julia hljs"># Yes:
+if x == 4 @show(x, y); x, y = y, x end
+
+# No:
+if x == 4 @show(x , y) ; x , y = y , x end</code></pre></li><li><p>Avoid whitespace around <code>:</code> in ranges. Use brackets to clarify expressions on either side.</p><pre><code class="language-julia hljs"># Yes:
+ham[1:9]
+ham[9:-3:0]
+ham[1:step:end]
+ham[lower:upper-1]
+ham[lower:upper - 1]
+ham[lower:(upper + offset)]
+ham[(lower + offset):(upper + offset)]
+
+# No:
+ham[1: 9]
+ham[9 : -3: 1]
+ham[lower : upper - 1]
+ham[lower + offset:upper + offset]  # Avoid as it is easy to read as `ham[lower + (offset:upper) + offset]`</code></pre></li><li><p>Avoid using more than one space around an assignment (or other) operator to align it with another:</p><pre><code class="language-julia hljs"># Yes:
+x = 1
+y = 2
+long_variable = 3
+
+# No:
+x             = 1
+y             = 2
+long_variable = 3</code></pre></li><li><p>Surround most binary operators with a single space on either side: assignment (<code>=</code>), <a href="https://docs.julialang.org/en/v1/manual/mathematical-operations/#Updating-operators-1">updating operators</a> (<code>+=</code>, <code>-=</code>, etc.), <a href="https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons-1">numeric comparisons operators</a> (<code>==</code>, <code>&lt;</code>, <code>&gt;</code>, <code>!=</code>, etc.), <a href="https://docs.julialang.org/en/v1/manual/functions/#man-anonymous-functions-1">lambda operator</a> (<code>-&gt;</code>).</p><p>Binary operators may be excluded from this guideline include: the <a href="https://docs.julialang.org/en/v1/base/math/#Base.::">range operator</a> (<code>:</code>), <a href="https://docs.julialang.org/en/v1/base/math/#Base.://">rational operator</a> (<code>//</code>), <a href="https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,%20Number}">exponentiation operator</a> (<code>^</code>), <a href="https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments-1">optional arguments/keywords</a> (e.g. <code>f(x = 1; y = 2)</code>).</p><pre><code class="language-julia hljs"># Yes:
+i = j + 1
+submitted += 1
+x^2 &lt; y
+
+# No:
+i=j+1
+submitted +=1
+x^2&lt;y</code></pre></li><li><p>Avoid using whitespace between unary operands and the expression:</p><pre><code class="language-julia hljs"># Yes:
+-1
+[1 0 -1]
+
+# No:
+- 1
+[1 0 - 1]  # Note: evaluates to `[1 -1]`</code></pre></li><li><p>Avoid extraneous empty lines. Avoid empty lines between single line method definitions and otherwise separate functions with one empty line, plus a comment if required:</p><p>```julia</p><h1>Yes:</h1><h1>Note: an empty line before the first long-form <code>domaths</code> method is optional.</h1><p>domaths(x::Number) = x + 5 domaths(x::Int) = x + 10 function domaths(x::String)     return &quot;A string is a one-dimensional extended object postulated in string theory.&quot; end</p><p>dophilosophy() = &quot;Why?&quot;</p><h1>No:</h1><p>domath(x::Number) = x + 5</p><p>domath(x::Int) = x + 10</p></li></ul><p>function domath(x::String)       return &quot;A string is a one-dimensional extended object postulated in string theory.&quot;   end</p><p>dophilosophy() = &quot;Why?&quot;</p><pre><code class="nohighlight hljs">
+- Function calls that cannot fit on a single line within the line limit should be broken up such that the lines containing the opening and closing brackets are indented to the same level while the parameters of the function are indented one level further.
+  In most cases, the arguments and/or keywords should each be placed on separate lines.
+  Note that this rule conflicts with the typical Julia convention of indenting the next line to align with the open bracket in which the parameter is contained.
+  If working in a package with a different convention, follow the convention used in the package over using this guideline.
+
+  ```julia
+  # Yes:
+  f(a, b)
+  constraint = conic_form!(SOCElemConstraint(temp2 + temp3, temp2 - temp3, 2 * temp1),
+                            unique_conic_forms)
+
+  # No:
+  # Note: `f` call is short enough to be on a single line
+  f(
+      a,
+      b,
+  )
+  constraint = conic_form!(SOCElemConstraint(temp2 + temp3,
+                                              temp2 - temp3, 2 * temp1),
+                            unique_conic_forms)
+  ```
+
+- Group similar one line statements together.
+
+  ```julia
+  # Yes:
+  foo = 1
+  bar = 2
+  baz = 3
+
+  # No:
+  foo = 1
+
+  bar = 2
+
+  baz = 3
+  ```
+
+- Use blank-lines to separate different multi-line blocks.
+
+  ```julia
+  # Yes:
+  if foo
+      println(&quot;Hi&quot;)
+  end
+
+  for i in 1:10
+      println(i)
+  end
+
+  # No:
+  if foo
+      println(&quot;Hi&quot;)
+  end
+  for i in 1:10
+      println(i)
+  end
+  ```
+
+- After a function definition, and before an end statement do not include a blank line.
+
+  ```julia
+  # Yes:
+  function foo(bar::Int64, baz::Int64)
+      return bar + baz
+  end
+
+  # No:
+  function foo(bar::Int64, baz::Int64)
+
+      return bar + baz
+  end
+
+  # No:
+  function foo(bar::In64, baz::Int64)
+      return bar + baz
+
+  end
+  ```
+
+- Use line breaks between control flow statements and returns.
+
+  ```julia
+  # Yes:
+  function foo(bar; verbose = false)
+      if verbose
+          println(&quot;baz&quot;)
+      end
+
+      return bar
+  end
+
+  # Ok:
+  function foo(bar; verbose = false)
+      if verbose
+          println(&quot;baz&quot;)
+      end
+      return bar
+  end
+  ```
+
+### NamedTuples
+
+The `=` character in `NamedTuple`s should be spaced as in keyword arguments.
+Space should be put between the name and its value.
+The empty `NamedTuple` should be written `NamedTuple()` not `(;)`
+</code></pre><p>julia</p><h1 id="Yes:"><a class="docs-heading-anchor" href="#Yes:">Yes:</a><a id="Yes:-1"></a><a class="docs-heading-anchor-permalink" href="#Yes:" title="Permalink"></a></h1><p>xy = (x = 1, y = 2) x = (x = 1,)  # Trailing comma required for correctness. x = (; kwargs...)  # Semicolon required to splat correctly.</p><h1 id="No:"><a class="docs-heading-anchor" href="#No:">No:</a><a id="No:-1"></a><a class="docs-heading-anchor-permalink" href="#No:" title="Permalink"></a></h1><p>xy = (x=1, y=2) xy = (;x=1,y=2)</p><pre><code class="nohighlight hljs">
+### Numbers
+
+- Floating-point numbers should always include a leading and/or trailing zero:
+
+  ```julia
+  # Yes:
+  0.1
+  2.0
+  3.0f0
+
+  # No:
+  .1
+  2.
+  3.f0
+  ```
+
+- Always prefer the type `Int` to `Int32` or `Int64` unless one has a specific reason
+  to choose the bit size.
+
+### Ternary Operator
+
+Ternary operators (`?:`) should generally only consume a single line.
+Do not chain multiple ternary operators.
+If chaining many conditions, consider using an `if`-`elseif`-`else` conditional, dispatch, or a dictionary.
+</code></pre><p>julia</p><h1 id="Yes:-2"><a class="docs-heading-anchor" href="#Yes:-2">Yes:</a><a class="docs-heading-anchor-permalink" href="#Yes:-2" title="Permalink"></a></h1><p>foobar = foo == 2 ? bar : baz</p><h1 id="No:-2"><a class="docs-heading-anchor" href="#No:-2">No:</a><a class="docs-heading-anchor-permalink" href="#No:-2" title="Permalink"></a></h1><p>foobar = foo == 2 ?     bar :     baz foobar = foo == 2 ? bar : foo == 3 ? qux : baz</p><pre><code class="nohighlight hljs">
+As an alternative, you can use a compound boolean expression:
+</code></pre><p>julia</p><h1 id="Yes:-3"><a class="docs-heading-anchor" href="#Yes:-3">Yes:</a><a class="docs-heading-anchor-permalink" href="#Yes:-3" title="Permalink"></a></h1><p>foobar = if foo == 2     bar else     baz end</p><p>foobar = if foo == 2     bar elseif foo == 3     qux else     baz end</p><pre><code class="nohighlight hljs">
+### For loops
+
+For loops should always use `in`, never `=` or `∈`.
+This also applies to list and generator comprehensions
+</code></pre><p>julia</p><h1 id="Yes"><a class="docs-heading-anchor" href="#Yes">Yes</a><a id="Yes-1"></a><a class="docs-heading-anchor-permalink" href="#Yes" title="Permalink"></a></h1><p>for i in 1:10     #... end</p><p>[foo(x) for x in xs]</p><h1 id="No:-3"><a class="docs-heading-anchor" href="#No:-3">No:</a><a class="docs-heading-anchor-permalink" href="#No:-3" title="Permalink"></a></h1><p>for i = 1:10     #... end</p><p>[foo(x) for x ∈ xs]</p><pre><code class="nohighlight hljs">
+### Function Type Annotations
+
+Annotations for function definitions should be as general as possible.
+</code></pre><p>julia</p><h1 id="Yes:-4"><a class="docs-heading-anchor" href="#Yes:-4">Yes:</a><a class="docs-heading-anchor-permalink" href="#Yes:-4" title="Permalink"></a></h1><p>splicer(arr::AbstractArray, step::Integer) = arr[begin:step:end]</p><h1 id="No:-4"><a class="docs-heading-anchor" href="#No:-4">No:</a><a class="docs-heading-anchor-permalink" href="#No:-4" title="Permalink"></a></h1><p>splicer(arr::Array{Int}, step::Int) = arr[begin:step:end]</p><pre><code class="nohighlight hljs">
+Using as many generic types as possible allows for a variety of inputs and allows your code to be more general:
+</code></pre><p>julia julia&gt; splicer(1:10, 2) 1:2:9</p><p>julia&gt; splicer([3.0, 5, 7, 9], 2) 2-element Array{Float64,1}:  3.0  7.0</p><pre><code class="nohighlight hljs">
+### Struct Type Annotations
+
+Annotations on type fields need to be given a little more thought, since field access is not concrete unless
+the compiler can infer the type (see [type-dispatch design](https://www.stochasticlifestyle.com/type-dispatch-design-post-object-oriented-programming-julia/) for details). Since well-inferred code is
+preferred, abstract type annotations, i.e.
+</code></pre><p>julia mutable struct MySubString &lt;: AbstractString     string::AbstractString     offset::Integer     endof::Integer end</p><pre><code class="nohighlight hljs">
+are not recommended. Instead a concretely-typed struct:
+</code></pre><p>julia mutable struct MySubString &lt;: AbstractString     string::String     offset::Int     endof::Int end</p><pre><code class="nohighlight hljs">
+is preferred. If generality is required, then parametric typing is preferred, i.e.:
+</code></pre><p>julia mutable struct MySubString{T&lt;:Integer} &lt;: AbstractString     string::String     offset::T     endof::T end</p><pre><code class="nohighlight hljs">
+Untyped fields should be explicitly typed `Any`, i.e.:
+</code></pre><p>julia struct StructA     a::Any end</p><pre><code class="nohighlight hljs">
+### Macros
+
+- Do not add spaces between assignments when there are multiple assignments.
+
+  ```julia
+  Yes:
+  @parameters a = b
+  @parameters a=b c=d
+
+  No:
+  @parameters a = b c = d
+  ```
+
+### Types and Type Annotations
+
+- Avoid elaborate union types. `Vector{Union{Int,AbstractString,Tuple,Array}}` should probably
+  be `Vector{Any}`. This will reduce the amount of extra strain on compilation checking many
+  branches.
+- Unions should be kept to two or three types only for branch splitting. Unions of three types
+  should be kept to a minimum for compile times.
+- Do not use `===` to compare types. Use `isa` or `&lt;:` instead.
+
+### Package version specifications
+
+- Use [Semantic Versioning](https://semver.org/)
+- For simplicity, avoid including the default caret specifier when specifying package version requirements.
+
+  ```julia
+  # Yes:
+  DataFrames = &quot;0.17&quot;
+
+  # No:
+  DataFrames = &quot;^0.17&quot;
+  ```
+
+- For accuracy, do not use constructs like `&gt;=` to avoid upper bounds.
+- Every dependency should have a bound.
+- All packages should use [CompatHelper](https://github.com/JuliaRegistries/CompatHelper.jl) and attempt to
+  stay up to date with the dependencies.
+- The lower bound on dependencies should be the last tested version.
+
+### Documentation
+
+- Documentation should always attempt to be at the highest level possible. I.e., documentation of an interface that
+  all methods follow is preferred to documenting every method, and documenting the interface of an abstract type is
+  preferred to documenting all the subtypes individually. All instances should then refer to the higher level
+  documentation.
+- Documentation should use [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/).
+- Tutorials should come before reference materials.
+- Every package should have a starting tutorial that covers “the 90% use case”, i.e. the ways that most people will
+  want to use the package.
+- The tutorial should show a complete workflow and be opinionated about said workflow. For example, when writing a tutorial
+  about a simulator, pick a plotting package and show how to plot it.
+- Variable names in tutorials are important. If you use `u0`, then all other codes will copy that naming scheme.
+  Show potential users the right way to use your code with the right naming.
+- When applicable, tutorials on how to use the “high performance advanced features” should be separated from the beginning tutorial.
+- All documentation should summarize the contents before going into specifics of API docstrings.
+- Most modules, types and functions should have [docstrings](http://docs.julialang.org/en/v1/manual/documentation/).
+- Prefer documenting accessor functions instead of fields when possible. Documented fields are part of the public API
+  and changing their contents/name constitutes a breaking change.
+- Only exported functions are required to be documented.
+- Avoid documenting commonly overloaded methods, such as `==`.
+- Try to document a function and not individual methods where possible, as typically all methods will have similar docstrings.
+- If you are adding a method to a function that already has a docstring only add a docstring if the
+  behavior of your function deviates from the existing docstring.
+- Docstrings are written in [Markdown](https://en.wikipedia.org/wiki/Markdown) and should be concise.
+- Docstring lines should be wrapped at 92 characters.
+
+  ```julia
+  &quot;&quot;&quot;
+      bar(x[, y])
+
+  Compute the Bar index between `x` and `y`. If `y` is missing, compute the Bar index between
+  all pairs of columns of `x`.
+  &quot;&quot;&quot;
+  function bar(x, y) ...
+  ```
+
+- It is recommended that you have a blank line between the headings and the content when the content is of sufficient length.
+- Try to be consistent within a docstring whether you use this additional whitespace.
+- Follow one of the following templates for types and functions when possible:
+
+  Type Template (should be skipped if it is redundant with the constructor(s) docstring):
+
+  ```julia
+  &quot;&quot;&quot;
+      MyArray{T, N}
+
+  My super awesome array wrapper!
+
+  # Fields
+  - `data::AbstractArray{T, N}`: stores the array being wrapped
+  - `metadata::Dict`: stores metadata about the array
+  &quot;&quot;&quot;
+  struct MyArray{T, N} &lt;: AbstractArray{T, N}
+      data::AbstractArray{T, N}
+      metadata::Dict
+  end
+  ```
+
+  Function Template (only required for exported functions):
+
+  ```julia
+  &quot;&quot;&quot;
+      mysearch(array::MyArray{T}, val::T; verbose = true) where {T} -&gt; Int
+
+  Searches the `array` for the `val`. For some reason we don&#39;t want to use Julia&#39;s
+  builtin search :)
+
+  # Arguments
+  - `array::MyArray{T}`: the array to search
+  - `val::T`: the value to search for
+
+  # Keywords
+  - `verbose::Bool = true`: print out progress details
+
+  # Returns
+  - `Int`: the index where `val` is located in the `array`
+
+  # Throws
+  - `NotFoundError`: I guess we could throw an error if `val` isn&#39;t found.
+  &quot;&quot;&quot;
+  function mysearch(array::AbstractArray{T}, val::T) where {T}
+      ...
+  end
+  ```
+
+- The `@doc doc&quot;&quot;&quot; &quot;&quot;&quot;` formulation from the Markdown standard library should be used whenever
+  there is LaTeX.
+- Only public fields of types must be documented. Undocumented fields are considered non-public internals.
+- If your method contains lots of arguments or keywords, you may want to exclude them from the method
+  signature on the first line and instead use `args...` and/or `kwargs...`.
+
+  ```julia
+  &quot;&quot;&quot;
+      Manager(args...; kwargs...) -&gt; Manager
+
+  A cluster manager which spawns workers.
+
+  # Arguments
+
+  - `min_workers::Integer`: The minimum number of workers to spawn or an exception is thrown
+  - `max_workers::Integer`: The requested number of workers to spawn
+
+  # Keywords
+
+  - `definition::AbstractString`: Name of the job definition to use. Defaults to the
+      definition used within the current instance.
+  - `name::AbstractString`: ...
+  - `queue::AbstractString`: ...
+  &quot;&quot;&quot;
+  function Manager(...)
+      ...
+  end
+  ```
+
+- Feel free to document multiple methods for a function within the same docstring. Be careful to only do this for functions you have defined.
+
+  ```julia
+  &quot;&quot;&quot;
+      Manager(max_workers; kwargs...)
+      Manager(min_workers:max_workers; kwargs...)
+      Manager(min_workers, max_workers; kwargs...)
+
+  A cluster manager which spawns workers.
+
+  # Arguments
+
+  - `min_workers::Int`: The minimum number of workers to spawn or an exception is thrown
+  - `max_workers::Int`: The requested number of workers to spawn
+
+  # Keywords
+
+  - `definition::AbstractString`: Name of the job definition to use. Defaults to the
+      definition used within the current instance.
+  - `name::AbstractString`: ...
+  - `queue::AbstractString`: ...
+  &quot;&quot;&quot;
+  function Manager end
+
+  ```
+
+- If the documentation for bullet-point exceeds 92 characters, the line should be wrapped and slightly indented.
+  Avoid aligning the text to the `:`.
+
+  ```julia
+  &quot;&quot;&quot;
+  ...
+
+  # Keywords
+  - `definition::AbstractString`: Name of the job definition to use. Defaults to the
+      definition used within the current instance.
+  &quot;&quot;&quot;
+  ```
+
+### Error Handling
+
+- `error(&quot;string&quot;)` should be avoided. Defining and throwing exception types is preferred. See the
+  [manual on exceptions for more details](https://docs.julialang.org/en/v1/manual/control-flow/#Exception-Handling).
+- Try to avoid `try/catch`. Use it as minimally as possible. Attempt to catch potential issues before running
+  code, not after.
+
+### Arrays
+
+- Avoid splatting (`...`) whenever possible. Prefer iterators such as `collect`, `vcat`, `hcat`, etc. instead.
+
+### Line Endings
+
+Always use Unix style `\n` line ending.
+
+### VS-Code Settings
+
+If you are a user of VS Code we recommend that you have the following options in your Julia syntax specific settings.
+To modify these settings, open your VS Code Settings with &lt;kbd&gt;CMD&lt;/kbd&gt;+&lt;kbd&gt;,&lt;/kbd&gt; (Mac OS) or &lt;kbd&gt;CTRL&lt;/kbd&gt;+&lt;kbd&gt;,&lt;/kbd&gt; (other OS), and add to your `settings.json`:
+</code></pre><p>json {     &quot;[julia]&quot;: {         &quot;editor.detectIndentation&quot;: false,         &quot;editor.insertSpaces&quot;: true,         &quot;editor.tabSize&quot;: 4,         &quot;files.insertFinalNewline&quot;: true,         &quot;files.trimFinalNewlines&quot;: true,         &quot;files.trimTrailingWhitespace&quot;: true,         &quot;editor.rulers&quot;: [92],         &quot;files.eol&quot;: &quot;\n&quot;     }, }</p><pre><code class="nohighlight hljs">
+Additionally, you may find the [Julia VS-Code plugin](https://github.com/julia-vscode/julia-vscode) useful.
+
+### JuliaFormatter
+
+**Note: the** `sciml` **style is only available in** `JuliaFormatter v1.0` **or later**
+
+One can add `.JuliaFormatter.toml` with the content
+</code></pre><p>toml style = &quot;sciml&quot;</p><pre><code class="nohighlight hljs">
+in the root of a repository, and run
+</code></pre><p>julia using JuliaFormatter, SomePackage format(joinpath(dirname(pathof(SomePackage)), &quot;..&quot;)) ```</p><p>to format the package automatically.</p><p>Add <a href="https://github.com/SciML/ModelingToolkit.jl/blob/master/.github/workflows/FormatCheck.yml">FormatCheck.yml</a> to enable the formatting CI. The CI will fail if the repository needs additional formatting. Thus, one should run <code>format</code> before committing.</p><h2 id="References"><a class="docs-heading-anchor" href="#References">References</a><a id="References-1"></a><a class="docs-heading-anchor-permalink" href="#References" title="Permalink"></a></h2><p>Many of these style choices were derived from the <a href="https://docs.julialang.org/en/v1/manual/style-guide/">Julia style guide</a>, the <a href="https://github.com/jrevels/YASGuide">YASGuide</a>, and the <a href="https://github.com/JuliaDiff/BlueStyle">Blue style guide</a>.</p></article><nav class="docs-footer"><p class="footer-message">Powered by <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> and the <a href="https://julialang.org/">Julia Programming Language</a>.</p></nav></div><div class="modal" id="documenter-settings"><div class="modal-background"></div><div class="modal-card"><header class="modal-card-head"><p class="modal-card-title">Settings</p><button class="delete"></button></header><section class="modal-card-body"><p><label class="label">Theme</label><div class="select"><select id="documenter-themepicker"><option value="auto">Automatic (OS)</option><option value="documenter-light">documenter-light</option><option value="documenter-dark">documenter-dark</option><option value="catppuccin-latte">catppuccin-latte</option><option value="catppuccin-frappe">catppuccin-frappe</option><option value="catppuccin-macchiato">catppuccin-macchiato</option><option value="catppuccin-mocha">catppuccin-mocha</option></select></div></p><hr/><p>This document was generated with <a href="https://github.com/JuliaDocs/Documenter.jl">Documenter.jl</a> version 1.15.0 on <span class="colophon-date" title="Saturday 25 October 2025 13:19">Saturday 25 October 2025</span>. Using Julia version 1.12.1.</p></section><footer class="modal-card-foot"></footer></div></div></div></body></html>
