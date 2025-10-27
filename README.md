@@ -11,7 +11,7 @@ maintain for production and deployment.
 It is open to discussion with the community. Please file an issue or open a PR to discuss changes to
 the style guide.
 
-## Table of Contents  <!-- omit from toc -->
+## Table of Contents
 
 - [SciML Style Guide for Julia](#SciML-Style-Guide-for-Julia)
   - [Code Style Badge](#Code-Style-Badge)
@@ -905,31 +905,31 @@ to a function.
 - Avoid extraneous empty lines. Avoid empty lines between single line method definitions
   and otherwise separate functions with one empty line, plus a comment if required:
 
-  ```julia
-  # Yes:
-  # Note: an empty line before the first long-form `domaths` method is optional.
-  domaths(x::Number) = x + 5
-  domaths(x::Int) = x + 10
-  function domaths(x::String)
-      return "A string is a one-dimensional extended object postulated in string theory."
-  end
+```julia
+# Yes:
+# Note: an empty line before the first long-form `domaths` method is optional.
+domaths(x::Number) = x + 5
+domaths(x::Int) = x + 10
+function domaths(x::String)
+    return "A string is a one-dimensional extended object postulated in string theory."
+end
 
-  dophilosophy() = "Why?"
+dophilosophy() = "Why?"
 
-  # No:
-  domath(x::Number) = x + 5
+# No:
+domath(x::Number) = x + 5
 
-  domath(x::Int) = x + 10
-
-
-
-  function domath(x::String)
-      return "A string is a one-dimensional extended object postulated in string theory."
-  end
+domath(x::Int) = x + 10
 
 
-  dophilosophy() = "Why?"
-  ```
+
+function domath(x::String)
+    return "A string is a one-dimensional extended object postulated in string theory."
+end
+
+
+dophilosophy() = "Why?"
+```
 
 - Function calls that cannot fit on a single line within the line limit should be broken up such that the lines containing the opening and closing brackets are indented to the same level while the parameters of the function are indented one level further.
   In most cases, the arguments and/or keywords should each be placed on separate lines.
