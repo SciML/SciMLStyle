@@ -1448,3 +1448,4 @@ Add [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.g
 
 Many of these style choices were derived from the [Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/),
 the [YASGuide](https://github.com/jrevels/YASGuide), and the [Blue style guide](https://github.com/JuliaDiff/BlueStyle).
+
