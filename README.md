@@ -5,7 +5,7 @@
 
 The SciML Style Guide is a style guide for the Julia programming language. It is used by the
 [SciML Open Source Scientific Machine Learning Organization](https://sciml.ai/). It covers proper
-styles to allow for easily high-quality, readable, robust, safety, and fast code that is easy to
+styles to allow for high-quality, readable, robust, safe, and fast code that is easy to
 maintain for production and deployment.
 
 It is open to discussion with the community. Please file an issue or open a PR to discuss changes to
@@ -26,7 +26,7 @@ the style guide.
     - [Errors should be caught as high as possible, and error messages should be contextualized for newcomers](#Errors-should-be-caught-as-high-as-possible,-and-error-messages-should-be-contextualized-for-newcomers)
     - [Subpackaging and interface packages is preferred over conditional modules via Requires.jl](#Subpackaging-and-interface-packages-is-preferred-over-conditional-modules-via-Requires.jl)
     - [Functions should either attempt to be non-allocating and reuse caches, or treat inputs as immutable](#Functions-should-either-attempt-to-be-non-allocating-and-reuse-caches,-or-treat-inputs-as-immutable)
-    - [Out-Of-Place and Immutability is preferred when sufficient performant](#Out-Of-Place-and-Immutability-is-preferred-when-sufficient-performant)
+    - [Out-Of-Place and Immutability is preferred when sufficiently performant](#Out-Of-Place-and-Immutability-is-preferred-when-sufficiently-performant)
     - [Tests should attempt to cover a wide gamut of input types](#Tests-should-attempt-to-cover-a-wide-gamut-of-input-types)
     - [When in doubt, a submodule should become a subpackage or separate package](#When-in-doubt,-a-submodule-should-become-a-subpackage-or-separate-package)
     - [Globals should be avoided whenever possible](#Globals-should-be-avoided-whenever-possible)
@@ -263,7 +263,7 @@ of today can generate. That said, the worst of all worlds is when code mixes mut
 code. Not only is this a mishmash of coding styles, but it also has the potential non-locality and compiler
 proof issues of mutating code while not fully benefiting from the mutation.
 
-### Out-Of-Place and Immutability is preferred when sufficient performant
+### Out-Of-Place and Immutability is preferred when sufficiently performant
 
 Mutation is used to get more performance by decreasing the number of heap allocations. However,
 if it's not helpful for heap allocations in a given spot, do not use mutation. Mutation is scary
@@ -1238,7 +1238,7 @@ end
   all methods follow is preferred to documenting every method, and documenting the interface of an abstract type is
   preferred to documenting all the subtypes individually. All instances should then refer to the higher level
   documentation.
-- Documentation should use [Documenter.jl](https://juliadocs.github.io/Documenter.jl/stable/).
+- Documentation should use [Documenter.jl](https://documenter.juliadocs.org/stable/).
 - Tutorials should come before reference materials.
 - Every package should have a starting tutorial that covers “the 90% use case”, i.e. the ways that most people will
   want to use the package.
@@ -1248,7 +1248,7 @@ end
   Show potential users the right way to use your code with the right naming.
 - When applicable, tutorials on how to use the “high performance advanced features” should be separated from the beginning tutorial.
 - All documentation should summarize the contents before going into specifics of API docstrings.
-- Most modules, types and functions should have [docstrings](http://docs.julialang.org/en/v1/manual/documentation/).
+- Most modules, types and functions should have [docstrings](https://docs.julialang.org/en/v1/manual/documentation/).
 - Prefer documenting accessor functions instead of fields when possible. Documented fields are part of the public API
   and changing their contents/name constitutes a breaking change.
 - Only exported functions are required to be documented.
