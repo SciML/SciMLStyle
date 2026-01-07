@@ -932,7 +932,7 @@ dophilosophy() = "Why?"
 ```
 
 - Function calls that cannot fit on a single line within the line limit should be broken up such that the lines containing the opening and closing brackets are indented to the same level while the parameters of the function are indented one level further.
-  In most cases, the arguments and/or keywords should each be placed on separate lines.
+  In most cases, the arguments and/or keywords should NOT each be placed on separate lines. Instead, arguments should be grouped to fill each line as much as possible within the line limit.
   Note that this rule conflicts with the typical Julia convention of indenting the next line to align with the open bracket in which the parameter is contained.
   If working in a package with a different convention, follow the convention used in the package over using this guideline.
 
