@@ -102,7 +102,7 @@ basis, i.e. do not update one file to match the style guide (leaving all other f
 ### Community Contribution Guidelines
 
 For a comprehensive set of community contribution guidelines, refer to [ColPrac](https://github.com/SciML/ColPrac).
-A relevant point to highlight PRs should do one thing. In the context of style, this means that PRs that update
+A relevant point to highlight is that PRs should do one thing. In the context of style, this means that PRs that update
 the style of a package's code should not be mixed with fundamental code contributions. This separation makes it
 easier to ensure that large style improvements are isolated from substantive (and potentially breaking) code changes.
 
@@ -807,7 +807,7 @@ to a function.
 - A `GROUP` environment variable should be used to specify test groups for parallel testing in continuous integration.
   A fallback group `All` should be used to specify all the tests that should be run when a developer runs `]test Package`
   locally. As an example, see the
-  [OrdinaryDiffEq.jl test structure](https://github.com/SciML/OrdinaryDiffEq.jl/blob/v6.10.0/test/runtests.jl)
+  [OrdinaryDiffEq.jl test structure](https://github.com/SciML/OrdinaryDiffEq.jl/blob/master/test/runtests.jl)
 - Tests should include downstream tests to major packages which use the functionality, to ensure continued support.
   Any update that breaks the downstream tests should follow with a notification to the downstream package of why the
   support was broken (preferably in the form of a PR that fixes support), and the package should be given a major
@@ -1196,11 +1196,11 @@ end
 - Do not add spaces between assignments when there are multiple assignments.
 
   ```julia
-  Yes:
+  # Yes:
   @parameters a = b
   @parameters a=b c=d
 
-  No:
+  # No:
   @parameters a = b c = d
   ```
 
