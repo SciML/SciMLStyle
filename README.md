@@ -243,7 +243,7 @@ Otherwise, instead of resorting to a conditional dependency using Requires.jl, i
 preferred to create subpackages, i.e. smaller independent packages kept within the same Github repository
 with independent versioning and package management. An example of this is seen in
 [Optimization.jl](https://github.com/SciML/Optimization.jl) which has subpackages like
-[OptimizationBBO.jl](https://github.com/SciML/Optimization.jl/tree/main/lib/OptimizationBBO) for
+[OptimizationBBO.jl](https://github.com/SciML/Optimization.jl/tree/master/lib/OptimizationBBO) for
 BlackBoxOptim.jl support.
 
 Some important interface packages to know about are:
@@ -807,7 +807,7 @@ to a function.
 - A `GROUP` environment variable should be used to specify test groups for parallel testing in continuous integration.
   A fallback group `All` should be used to specify all the tests that should be run when a developer runs `]test Package`
   locally. As an example, see the
-  [OrdinaryDiffEq.jl test structure](https://github.com/SciML/OrdinaryDiffEq.jl/blob/main/test/runtests.jl)
+  [OrdinaryDiffEq.jl test structure](https://github.com/SciML/OrdinaryDiffEq.jl/blob/master/test/runtests.jl)
 - Tests should include downstream tests to major packages which use the functionality, to ensure continued support.
   Any update that breaks the downstream tests should follow with a notification to the downstream package of why the
   support was broken (preferably in the form of a PR that fixes support), and the package should be given a major
