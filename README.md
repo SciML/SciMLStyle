@@ -72,7 +72,7 @@ the style guide.
     - [Arrays](#Arrays)
     - [Line Endings](#Line-Endings)
     - [VS-Code Settings](#VS-Code-Settings)
-    - [JuliaFormatter](#JuliaFormatter)
+    - [Runic](#Runic)
   - [References](#References)
 
 ## Code Style Badge
@@ -581,8 +581,8 @@ function was never called on it, with a warning indicating that the buffer shoul
 
 ### High Level Rules
 
-- Use 4 spaces per indentation level, no tabs.
-- Try to adhere to a 92 character line length limit.
+- Use 4 spaces per indentation level, no tabs. This is automatically enforced by [Runic.jl](https://github.com/fredrikekre/Runic.jl).
+- Try to adhere to a 92 character line length limit. Note that Runic.jl does not automatically wrap long lines, so this must be done manually.
 
 ### General Naming Principles
 
@@ -821,6 +821,9 @@ to a function.
 
 ### Whitespace
 
+Note: These whitespace rules are automatically enforced by [Runic.jl](https://github.com/fredrikekre/Runic.jl).
+Running Runic on your code will ensure consistent whitespace formatting.
+
 - Avoid extraneous whitespace immediately inside parentheses, square brackets or braces.
 
   ```julia
@@ -874,9 +877,9 @@ to a function.
   long_variable = 3
   ```
 
-- Surround most binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.), [lambda operator](https://docs.julialang.org/en/v1/manual/functions/#man-anonymous-functions-1) (`->`).
+- Surround most binary operators with a single space on either side: assignment (`=`), [updating operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Updating-operators-1) (`+=`, `-=`, etc.), [numeric comparisons operators](https://docs.julialang.org/en/v1/manual/mathematical-operations/#Numeric-Comparisons-1) (`==`, `<`, `>`, `!=`, etc.), [lambda operator](https://docs.julialang.org/en/v1/manual/functions/#man-anonymous-functions-1) (`->`). This includes [keyword arguments](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments-1) (e.g. `f(x = 1; y = 2)`).
 
-  Binary operators may be excluded from this guideline include: the [range operator](https://docs.julialang.org/en/v1/base/math/#Base.::) (`:`), [rational operator](https://docs.julialang.org/en/v1/base/math/#Base.://) (`//`), [exponentiation operator](https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,%20Number}) (`^`), [optional arguments/keywords](https://docs.julialang.org/en/v1/manual/functions/#Optional-Arguments-1) (e.g. `f(x = 1; y = 2)`).
+  Exceptions (no spaces): the [range operator](https://docs.julialang.org/en/v1/base/math/#Base.::) (`:`), [exponentiation operator](https://docs.julialang.org/en/v1/base/math/#Base.:^-Tuple{Number,%20Number}) (`^`), and [type annotations](https://docs.julialang.org/en/v1/manual/types/) (`::`). For example, `a:b`, `x^2`, and `x::Int` should not have spaces around the operators.
 
   ```julia
   # Yes:
@@ -1034,9 +1037,9 @@ dophilosophy() = "Why?"
 
 ### NamedTuples
 
-The `=` character in `NamedTuple`s should be spaced as in keyword arguments.
-Space should be put between the name and its value.
-The empty `NamedTuple` should be written `NamedTuple()` not `(;)`
+The `=` character in `NamedTuple`s should have spaces around it, consistent with keyword arguments.
+The empty `NamedTuple` should be written `NamedTuple()` not `(;)`.
+Runic.jl will automatically format named tuples with proper spacing.
 
 ```julia
 # Yes:
@@ -1107,7 +1110,8 @@ end
 ### For loops
 
 For loops should always use `in`, never `=` or `∈`.
-This also applies to list and generator comprehensions
+This also applies to list and generator comprehensions.
+Runic.jl will automatically convert `=` and `∈` to `in` in loop expressions.
 
 ```julia
 # Yes
@@ -1423,26 +1427,69 @@ To modify these settings, open your VS Code Settings with <kbd>CMD</kbd>+<kbd>,<
 
 Additionally, you may find the [Julia VS-Code plugin](https://github.com/julia-vscode/julia-vscode) useful.
 
-### JuliaFormatter
+### Runic
 
-**Note: the** `sciml` **style is only available in** `JuliaFormatter v1.0` **or later**
+SciML uses [Runic.jl](https://github.com/fredrikekre/Runic.jl) for code formatting. Runic is a code formatter
+for Julia with a zero-configuration philosophy—formatting rules are fixed and cannot be customized, prioritizing
+uniformity across codebases. As the Runic documentation states: "Gofmt's style is no one's favorite, yet gofmt
+is everyone's favorite."
 
-One can add `.JuliaFormatter.toml` with the content
-
-```toml
-style = "sciml"
-```
-
-in the root of a repository, and run
+To format a package, first install Runic.jl:
 
 ```julia
-using JuliaFormatter, SomePackage
-format(joinpath(dirname(pathof(SomePackage)), ".."))
+julia --project=@runic -e 'using Pkg; Pkg.add("Runic")'
 ```
 
-to format the package automatically.
+Then format your code:
 
-Add [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.github/workflows/FormatCheck.yml) to enable the formatting CI. The CI will fail if the repository needs additional formatting. Thus, one should run `format` before committing.
+```bash
+# Format a file in place
+julia --project=@runic -m Runic --inplace src/MyFile.jl
+
+# Format a directory recursively
+julia --project=@runic -m Runic --inplace src/
+
+# Check formatting without making changes
+julia --project=@runic -m Runic --check --diff src/
+```
+
+Add the following [FormatCheck.yml](https://github.com/SciML/ModelingToolkit.jl/blob/master/.github/workflows/FormatCheck.yml)
+to `.github/workflows/` to enable formatting CI:
+
+```yaml
+name: format-check
+
+on:
+  push:
+    branches:
+      - 'master'
+      - 'main'
+      - 'release-'
+    tags: '*'
+  pull_request:
+
+jobs:
+  runic:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: fredrikekre/runic-action@v1
+        with:
+          version: '1'
+```
+
+The CI will fail if the repository needs additional formatting. Thus, one should run Runic before committing.
+
+To selectively disable formatting for specific code blocks, use comments:
+
+```julia
+# runic: off
+# This code will not be formatted
+some_unformatted_code()
+# runic: on
+```
+
+For compatibility with JuliaFormatter, the comments `#! format: off` and `#! format: on` are also recognized by Runic.
 
 ## References
 
