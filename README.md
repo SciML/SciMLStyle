@@ -1495,3 +1495,4 @@ For compatibility with JuliaFormatter, the comments `#! format: off` and `#! for
 
 Many of these style choices were derived from the [Julia style guide](https://docs.julialang.org/en/v1/manual/style-guide/),
 the [YASGuide](https://github.com/jrevels/YASGuide), and the [Blue style guide](https://github.com/JuliaDiff/BlueStyle).
+
